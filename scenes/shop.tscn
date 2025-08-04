@@ -1,0 +1,373 @@
+[gd_scene load_steps=9 format=3 uid="uid://dten3tw28j4f8"]
+
+[ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="2_xfvoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
+bg_color = Color(0.338, 0.5252, 0.65, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx5au"]
+bg_color = Color(0.800427, 0.940712, 0.964975, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
+bg_color = Color(0, 0, 0, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fc2m"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("upgrade_fuel", "upgrade_fuel_buttons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lx5au")
+style_bought = SubResource("StyleBoxFlat_xfvoa")
+style_afford = SubResource("StyleBoxFlat_lx5au")
+style_unaffordable = SubResource("StyleBoxFlat_1l46r")
+upgrade_fuel = NodePath("HBoxContainer/StatUpgrades/Upgrade")
+upgrade_fuel_buttons = [NodePath("HBoxContainer/StatUpgrades/Upgrade/Button"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button2"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button3"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button4")]
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.454902)
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bdmwb")
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = 55.0
+offset_right = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="StatUpgrades" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+text = "STAT UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrade" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+tooltip_text = "Upgrade Starting Fuel Amount"
+
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade"]
+layout_mode = 2
+text = "Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+script = ExtResource("2_xfvoa")
+cost = Dictionary[String, int]({
+"Iron Ore": 1
+})
+
+[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+script = ExtResource("2_xfvoa")
+cost = Dictionary[String, int]({
+"Iron Ore": 2
+})
+
+[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+disabled = true
+script = ExtResource("2_xfvoa")
+cost = Dictionary[String, int]({
+"Iron Ore": 3
+})
+
+[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_032fp")
+disabled = true
+script = ExtResource("2_xfvoa")
+cost = Dictionary[String, int]({
+"Iron Ore": 4
+})
+
+[node name="Upgrade2" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+layout_mode = 2
+text = "Fortune"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+script = ExtResource("2_xfvoa")
+type = 3
+cost = Dictionary[String, int]({
+"Iron Ore": 1
+})
+
+[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+script = ExtResource("2_xfvoa")
+type = 3
+cost = Dictionary[String, int]({
+"Iron Ore": 1
+})
+
+[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+script = ExtResource("2_xfvoa")
+type = 3
+cost = Dictionary[String, int]({
+"Iron Ore": 1
+})
+
+[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade2"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+script = ExtResource("2_xfvoa")
+type = 3
+cost = Dictionary[String, int]({
+"Iron Ore": 1
+})
+
+[node name="Upgrade3" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+layout_mode = 2
+text = "Starting Depth"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+
+[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+
+[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Upgrade4" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+layout_mode = 2
+text = "Sweet Size"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+
+[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+
+[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Upgrade5" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+layout_mode = 2
+text = "Sweet Frequency"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+
+[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+
+[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
+disabled = true
+
+[node name="Augments" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="HBoxContainer/Augments"]
+layout_mode = 2
+text = "AUGMENTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Augments"]
+layout_mode = 2
+text = "Sweet Drilling"
+
+[node name="Button2" type="Button" parent="HBoxContainer/Augments"]
+layout_mode = 2
+text = "Dowsing Rod"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_top = -63.0
+offset_right = 66.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Dive Again"

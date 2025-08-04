@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://by86bhvu38sxh"]
+
+[ext_resource type="PackedScene" uid="uid://nen6gdpusaex" path="res://scenes/world.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://bqcd2apx8kbxh" path="res://scripts/scene_manager.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dten3tw28j4f8" path="res://scenes/shop.tscn" id="3_jyhfs"]
+
+[node name="Main" type="Node"]
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("2_0wfyh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Shop" parent="CanvasLayer" instance=ExtResource("3_jyhfs")]
+offset_left = 68.0
+offset_top = 35.0
+offset_right = -68.0
+offset_bottom = -35.0
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="World" parent="Game" instance=ExtResource("1_0wfyh")]

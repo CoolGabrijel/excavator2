@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlockTemplate" load_steps=3 format=3 uid="uid://clsmuq7jc6s8g"]
+
+[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_lkmp6"]
+[ext_resource type="Script" uid="uid://cgrp6377ny7wg" path="res://scripts/block_template.gd" id="2_jwhlr"]
+
+[resource]
+script = ExtResource("2_jwhlr")
+Name = "Stone"
+BlockTexture = ExtResource("1_lkmp6")
+BacksideTexture = ExtResource("1_lkmp6")
+metadata/_custom_type_script = "uid://cgrp6377ny7wg"

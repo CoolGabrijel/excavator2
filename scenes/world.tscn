@@ -1,0 +1,26 @@
+[gd_scene load_steps=11 format=3 uid="uid://nen6gdpusaex"]
+
+[ext_resource type="Script" uid="uid://dep2ubx38ula0" path="res://scripts/world_instance.gd" id="1_rwgxs"]
+[ext_resource type="Script" uid="uid://djy2i6ae37oll" path="res://scripts/block_gen_parameter.gd" id="2_k0juu"]
+[ext_resource type="Script" uid="uid://bpwes786s8o8n" path="res://scripts/world_gen_parameter.gd" id="2_rwgxs"]
+[ext_resource type="Resource" uid="uid://cktbgkctmgwo7" path="res://blocks/Dirt.tres" id="3_71j4m"]
+[ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="5_7r4gi"]
+[ext_resource type="Resource" uid="uid://gu8qsyta7aac" path="res://ores/Iron.tres" id="6_w7kh3"]
+[ext_resource type="Resource" uid="uid://dl6l1xco2ey4h" path="res://ores/Emerald.tres" id="7_e3hyu"]
+[ext_resource type="Resource" uid="uid://cmwdad38gkgjj" path="res://ores/Diamond.tres" id="8_q5onr"]
+
+[sub_resource type="Resource" id="Resource_qfnet"]
+script = ExtResource("2_k0juu")
+template = ExtResource("3_71j4m")
+parameters = Array[Vector2i]([Vector2i(0, 0)])
+metadata/_custom_type_script = "uid://djy2i6ae37oll"
+
+[sub_resource type="Resource" id="Resource_4wyf3"]
+script = ExtResource("2_rwgxs")
+Parameters = Array[ExtResource("2_k0juu")]([SubResource("Resource_qfnet")])
+metadata/_custom_type_script = "uid://bpwes786s8o8n"
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_rwgxs")
+world_gen_parameter = SubResource("Resource_4wyf3")
+ores = Array[ExtResource("5_7r4gi")]([ExtResource("6_w7kh3"), ExtResource("7_e3hyu"), ExtResource("8_q5onr")])

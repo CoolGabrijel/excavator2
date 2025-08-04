@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://gu8qsyta7aac"]
+
+[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_mkvw7"]
+[ext_resource type="Texture2D" uid="uid://mh3jya85jjp" path="res://textures/iron_ore.png" id="2_yepxg"]
+[ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="3_huo8c"]
+
+[sub_resource type="Gradient" id="Gradient_6s6ed"]
+offsets = PackedFloat32Array(0.712329, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
+seed = 194934062
+frequency = 0.1144
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkvw7"]
+width = 64
+height = 64
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_6s6ed")
+noise = SubResource("FastNoiseLite_ud7q6")
+
+[sub_resource type="Gradient" id="Gradient_mkvw7"]
+offsets = PackedFloat32Array(0.0308642, 0.111111, 0.771605)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[resource]
+script = ExtResource("3_huo8c")
+NoiseGen = SubResource("NoiseTexture2D_mkvw7")
+Ramp = SubResource("Gradient_mkvw7")
+Name = "Iron Ore"
+BlockTexture = ExtResource("2_yepxg")
+BacksideTexture = ExtResource("1_mkvw7")
+metadata/_custom_type_script = "uid://dhj3wd1joua2f"
