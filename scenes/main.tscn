@@ -12,6 +12,7 @@ script = ExtResource("2_0wfyh")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Shop" parent="CanvasLayer" instance=ExtResource("3_jyhfs")]
+visible = false
 offset_left = 68.0
 offset_top = 35.0
 offset_right = -68.0

@@ -29,6 +29,15 @@ func _physics_process(_delta: float) -> void:
 			else:
 				disable_button(shop.style_unaffordable)
 
+func _pressed() -> void:
+	var index = get_child_index()+1
+	
+	match type:
+		UpgradeType.Fuel:
+			Shop.fuel_eff = index
+	
+	Inventory.remove_ores(cost)
+
 func get_total_cost() -> Dictionary[String, int]:
 	var final_cost : Dictionary[String, int]
 	var index : int = 0
