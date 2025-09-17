@@ -1,6 +1,10 @@
 extends Node2D
 class_name Player
 
+@onready var gfx: Node2D = $Gfx
+@onready var sprite_2d: Sprite2D = $Gfx/Sprite2D
+@onready var sparks: GPUParticles2D = $Gfx/Sparks
+
 @export var speed: float = 1
 
 var current_grid_position : Vector2i
@@ -15,7 +19,15 @@ var moveTween : Tween
 func _ready() -> void:
 	current_grid_position = Vector2i(0,0)
 	fuel = 15 + 5 * Shop.fuel_eff
-	locked = false
+	sparks.emitting = false
+	
+	gfx.position.y -= 500
+	var intro_tween: Tween = create_tween()
+	intro_tween.set_ease(Tween.EASE_IN)
+	intro_tween.set_trans(Tween.TRANS_EXPO)
+	intro_tween.tween_property(gfx, "position", Vector2(0, -16), 3)
+	intro_tween.tween_property(gfx, "position", Vector2.ZERO, 0.75).set_ease(Tween.EASE_OUT)
+	intro_tween.finished.connect(func(): locked = false)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatFuel"):
@@ -36,20 +48,24 @@ func handle_movement(delta: float) -> void:
 	if xDir > 0:
 		target_grid_position = current_grid_position + Vector2i(1,0)
 		dir = Vector2.RIGHT
-		$Sprite2D.frame = 0
+		#sprite_2d.frame = 0
+		gfx.rotation_degrees = -90
 	elif xDir < 0:
 		target_grid_position = current_grid_position + Vector2i(-1,0)
 		dir = Vector2.LEFT
-		$Sprite2D.frame = 1
+		#sprite_2d.frame = 1
+		gfx.rotation_degrees = 90
 	elif yDir > 0:
 		if target_grid_position.y > 0: #Make sure the player doesn't start flying
 			target_grid_position = current_grid_position + Vector2i(0,-1)
 			dir = Vector2.UP
-			$Sprite2D.frame = 3
+			#sprite_2d.frame = 3
+			gfx.rotation_degrees = 180
 	elif yDir < 0:
 		target_grid_position = current_grid_position + Vector2i(0,1)
 		dir = Vector2.DOWN
-		$Sprite2D.frame = 2
+		#sprite_2d.frame = 2
+		gfx.rotation_degrees = 0
 	
 	if !WorldInstance.blocks.has(target_grid_position):
 		return
@@ -59,8 +75,11 @@ func handle_movement(delta: float) -> void:
 	if is_input_same():
 		if target_block.template is not OreGen or target_block.mined:
 			position = position + dir * delta * speed
+			sparks.emitting = false
 		else:
 			position = position + dir * delta * speed / 3
+			if !sparks.emitting:
+				sparks.emitting = true
 	
 	if (world_to_grid_space(position) - current_grid_position).length() > 0:
 		current_grid_position = target_grid_position

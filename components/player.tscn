@@ -1,9 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://y2kx1fl6aftx"]
+[gd_scene load_steps=14 format=3 uid="uid://y2kx1fl6aftx"]
 
 [ext_resource type="Texture2D" uid="uid://dsh8mb656eopf" path="res://textures/player.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://l8hr1my2a8si" path="res://scripts/player.gd" id="1_51jd6"]
 [ext_resource type="Script" uid="uid://ddnfjlsstu884" path="res://scripts/sweet_drill_aug.gd" id="3_5odhx"]
 [ext_resource type="PackedScene" uid="uid://c60pjop27p8gt" path="res://components/debug_pos.tscn" id="3_uapwn"]
+
+[sub_resource type="Curve" id="Curve_5odhx"]
+_data = [Vector2(0, 1), 0.0, -3.0, 0, 1, Vector2(0.2, 0.4), -0.70539856, -0.70539856, 0, 0, Vector2(1, 0), -0.5, 0.0, 1, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_1kub6"]
+curve = SubResource("Curve_5odhx")
+
+[sub_resource type="Gradient" id="Gradient_kuobi"]
+colors = PackedColorArray(1, 1, 1, 1, 0.5254902, 0.6156863, 0.6156863, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0lm1f"]
+gradient = SubResource("Gradient_kuobi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5odhx"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 9.8, 0)
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("GradientTexture1D_0lm1f")
+alpha_curve = SubResource("CurveTexture_1kub6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_51jd6"]
 size = Vector2(16, 16)
@@ -29,13 +53,19 @@ func _physics_process(_delta: float) -> void:
 script = ExtResource("1_51jd6")
 speed = 17.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Gfx" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Gfx"]
 texture = ExtResource("1_0g4kb")
 hframes = 4
 frame = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Gfx"]
 zoom = Vector2(3, 3)
+
+[node name="Sparks" type="GPUParticles2D" parent="Gfx"]
+position = Vector2(0, 8)
+process_material = SubResource("ParticleProcessMaterial_5odhx")
 
 [node name="CurrentPos" type="MeshInstance2D" parent="."]
 modulate = Color(0.51, 1, 0.51, 0.192157)

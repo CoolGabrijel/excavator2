@@ -1,7 +1,7 @@
 extends Node
 class_name Shop
 
-static var fuel_eff: int = 1
+static var fuel_eff: int = 0
 
 static var fortune_amount: int = 0
 static var fortune_freq: int = 3

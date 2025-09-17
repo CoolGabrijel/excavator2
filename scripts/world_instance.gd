@@ -6,8 +6,8 @@ class_name WorldInstance
 @export var world_gen_parameter : WorldGenParameter
 @export var ores : Array[OreGen]
 
-const block_component = preload("res://components/block.tscn")
-const stone_template = preload("res://blocks/Stone.tres")
+var block_component = load("res://components/block.tscn")
+var stone_template = load("res://blocks/Stone.tres")
 
 static var blocks : Dictionary[Vector2i, BlockInstance]
 

@@ -11,10 +11,17 @@ var mined := false
 var curtainTween : Tween
 
 func _ready() -> void:
+	modulate = Color.BLACK
+	
+	if !template:
+		return
+	
+	if !template.BlockTexture or !template.BacksideTexture:
+		return
+	
 	front.texture = template.BlockTexture
 	back.texture = template.BacksideTexture
 	
-	modulate = Color.BLACK
 	#reveal()
 
 func set_template(new_template: BlockTemplate) -> void:

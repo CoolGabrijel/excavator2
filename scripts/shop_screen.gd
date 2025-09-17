@@ -9,7 +9,11 @@ extends Control
 @export var upgrade_fuel_buttons : Array[Button]
 
 func _ready() -> void:
-	update_upgrades()
+	#update_upgrades()
+	pass
+
+func dive_again() -> void:
+	get_tree().reload_current_scene()
 
 func update_upgrades() -> void:
 	var buttons : Array[Button]

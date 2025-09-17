@@ -13,9 +13,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	var total_cost := get_total_cost()
-	tooltip_text = "Cost: \n"
-	for ingredient in total_cost:
-		tooltip_text += ingredient + " " + str(total_cost[ingredient]) + "\n"
+	update_tooltip(total_cost)
 	
 	for ingredient in total_cost:
 		if !Inventory.ores.has(ingredient):
@@ -35,8 +33,11 @@ func _pressed() -> void:
 	match type:
 		UpgradeType.Fuel:
 			Shop.fuel_eff = index
+		UpgradeType.Fortune_Freq:
+			Shop.fortune_freq = index
 	
 	Inventory.remove_ores(cost)
+	update_tooltip(cost)
 
 func get_total_cost() -> Dictionary[String, int]:
 	var final_cost : Dictionary[String, int]
@@ -66,6 +67,19 @@ func get_upgrade_index() -> int:
 	if type == UpgradeType.Fortune_Amount:
 		return Shop.fortune_amount
 	return 0
+
+func update_tooltip(total_cost) -> void:
+	if get_upgrade_index() > get_child_index():
+		tooltip_text = "BOUGHT"
+		return
+	
+	tooltip_text = "Cost: \n"
+	for ingredient in total_cost:
+		tooltip_text += ingredient + " "
+		var amount_in_inv : int = 0
+		if Inventory.ores.has(ingredient):
+			amount_in_inv = Inventory.ores[ingredient]
+		tooltip_text += str(amount_in_inv) + "/" + str(total_cost[ingredient]) + "\n"
 
 func disable_button(style : StyleBoxFlat) -> void:
 	disabled = true

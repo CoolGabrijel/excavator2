@@ -160,7 +160,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade2"]
 layout_mode = 2
-text = "Fortune"
+text = "Fortune Freq."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -357,7 +357,7 @@ text = "Sweet Drilling"
 layout_mode = 2
 text = "Dowsing Rod"
 
-[node name="Button" type="Button" parent="."]
+[node name="Btn_Dive" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -371,3 +371,5 @@ offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Dive Again"
+
+[connection signal="pressed" from="Btn_Dive" to="." method="dive_again"]
