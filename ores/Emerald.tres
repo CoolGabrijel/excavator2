@@ -9,7 +9,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
 noise_type = 2
-seed = 2083851678
+seed = -1017824945
 frequency = 0.0457
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i7x3i"]

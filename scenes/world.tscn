@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nen6gdpusaex"]
+[gd_scene load_steps=14 format=3 uid="uid://nen6gdpusaex"]
 
 [ext_resource type="Script" uid="uid://dep2ubx38ula0" path="res://scripts/world_instance.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://djy2i6ae37oll" path="res://scripts/block_gen_parameter.gd" id="2_k0juu"]
@@ -20,7 +20,25 @@ script = ExtResource("2_rwgxs")
 Parameters = Array[ExtResource("2_k0juu")]([SubResource("Resource_qfnet")])
 metadata/_custom_type_script = "uid://bpwes786s8o8n"
 
+[sub_resource type="Gradient" id="Gradient_4mrxx"]
+offsets = PackedFloat32Array(0.9, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7r4gi"]
+noise_type = 5
+frequency = 0.1092
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7kh3"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_7r4gi")
+color_ramp = SubResource("Gradient_4mrxx")
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_rwgxs")
 world_gen_parameter = SubResource("Resource_4wyf3")
 ores = Array[ExtResource("5_7r4gi")]([ExtResource("6_w7kh3"), ExtResource("7_e3hyu"), ExtResource("8_q5onr")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -520)
+texture = SubResource("NoiseTexture2D_w7kh3")

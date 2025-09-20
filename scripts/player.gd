@@ -25,9 +25,10 @@ func _ready() -> void:
 	var intro_tween: Tween = create_tween()
 	intro_tween.set_ease(Tween.EASE_IN)
 	intro_tween.set_trans(Tween.TRANS_EXPO)
-	intro_tween.tween_property(gfx, "position", Vector2(0, -16), 3)
+	intro_tween.tween_property(gfx, "position", Vector2(0, -16), 1)
 	intro_tween.tween_property(gfx, "position", Vector2.ZERO, 0.75).set_ease(Tween.EASE_OUT)
 	intro_tween.finished.connect(func(): locked = false)
+	intro_tween.finished.connect(func(): WorldInstance.blocks[Vector2i.ZERO].mine(roll_fortune()))
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatFuel"):

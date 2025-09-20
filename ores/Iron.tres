@@ -8,7 +8,7 @@ offsets = PackedFloat32Array(0.712329, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
-seed = 499108835
+seed = -1659561121
 frequency = 0.1144
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkvw7"]
@@ -19,8 +19,8 @@ noise = SubResource("FastNoiseLite_ud7q6")
 color_ramp = SubResource("Gradient_6s6ed")
 
 [sub_resource type="Gradient" id="Gradient_mkvw7"]
-offsets = PackedFloat32Array(0.0308642, 0.111111, 0.771605)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.0308642, 0.111111, 0.21764706, 0.68235296)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.9277623, 1, 1, 1, 0)
 
 [resource]
 script = ExtResource("3_huo8c")
