@@ -77,6 +77,21 @@ static func reveal_radius(pos:Vector2i, radius: int) -> void:
 			
 			blocks[discover_pos].reveal()
 
+static func get_blocks_in_radius(pos:Vector2i, radius: int) -> Array[BlockInstance]:
+	var result : Array[BlockInstance]
+	
+	for y in range(-radius, radius+1):
+		for x in range(-radius, radius+1):
+			if absi(x) + absi(y) > radius:
+				continue
+			var discover_pos : Vector2i = pos + Vector2i(x,y)
+			if !blocks.has(discover_pos):
+				continue
+			
+			result.append(blocks[discover_pos])
+	
+	return result
+
 func reveal_top_layer(depth: int) -> void:
 	for y in depth:
 		for x in range(-size.x, size.x+1):

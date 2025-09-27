@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cpcw2ud755qfe"]
+
+[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_2om3n"]
+[ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_dqnxr"]
+[ext_resource type="Texture2D" uid="uid://cp6dnu42s57lt" path="res://textures/copper_ore.tres" id="3_c37jq"]
+
+[sub_resource type="Gradient" id="Gradient_ud7q6"]
+offsets = PackedFloat32Array(0.62, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
+seed = -1680368792
+frequency = 0.0855
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_i7x3i")
+color_ramp = SubResource("Gradient_ud7q6")
+
+[sub_resource type="Gradient" id="Gradient_dqnxr"]
+offsets = PackedFloat32Array(0.050632913, 0.11392405, 0.6708861)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[resource]
+script = ExtResource("1_dqnxr")
+NoiseGen = SubResource("NoiseTexture2D_af3ny")
+Ramp = SubResource("Gradient_dqnxr")
+Name = "Qapur"
+BlockTexture = ExtResource("3_c37jq")
+BacksideTexture = ExtResource("1_2om3n")
+metadata/_custom_type_script = "uid://dhj3wd1joua2f"

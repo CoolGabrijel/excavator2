@@ -115,19 +115,19 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
 cost = Dictionary[String, int]({
-"Iron Ore": 1
+"Qapur": 5
 })
 
 [node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
 cost = Dictionary[String, int]({
 "Iron Ore": 2
@@ -172,8 +172,8 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
 type = 3
 cost = Dictionary[String, int]({
@@ -184,8 +184,8 @@ cost = Dictionary[String, int]({
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
 type = 3
 cost = Dictionary[String, int]({
@@ -233,15 +233,15 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
 custom_minimum_size = Vector2(23, 0)
@@ -274,15 +274,15 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
 custom_minimum_size = Vector2(23, 0)
@@ -315,15 +315,15 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
 custom_minimum_size = Vector2(23, 0)

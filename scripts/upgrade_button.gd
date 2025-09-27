@@ -87,7 +87,7 @@ func disable_button(style : StyleBoxFlat) -> void:
 	add_theme_stylebox_override("disabled", style)
 
 func get_child_index() -> int:
-	var index : int
+	var index : int = 0
 	for child in get_parent().get_children():
 		if child is Button:
 			if child == self:

@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [file_customization]
 
 folder_colors={
-"res://scripts/": "blue"
+"res://scripts/": "blue",
+"res://textures/": "green"
 }
 
 [gui]

@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dcdbjm4dg6nhg"]
+
+[ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="1_wemst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnq6r"]
+atlas = ExtResource("1_wemst")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqx0t"]
+atlas = ExtResource("1_wemst")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpbi6"]
+atlas = ExtResource("1_wemst")
+region = Rect2(32, 96, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 30.0,
+"texture": SubResource("AtlasTexture_cnq6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqx0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpbi6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

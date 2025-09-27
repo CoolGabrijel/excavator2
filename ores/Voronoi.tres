@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://rdemikbw26rm"]
+
+[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_kybbl"]
+[ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_xwdct"]
+[ext_resource type="Texture2D" uid="uid://nsq07wm1lodw" path="res://textures/dirt.png" id="2_qwcee"]
+
+[sub_resource type="Gradient" id="Gradient_kybbl"]
+offsets = PackedFloat32Array(0, 0.3)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kybbl"]
+noise_type = 2
+seed = 1416235285
+frequency = 0.082
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xwdct"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_kybbl")
+color_ramp = SubResource("Gradient_kybbl")
+
+[sub_resource type="Gradient" id="Gradient_sf1vi"]
+offsets = PackedFloat32Array(0, 0.37974682)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[resource]
+script = ExtResource("1_xwdct")
+NoiseGen = SubResource("NoiseTexture2D_xwdct")
+Ramp = SubResource("Gradient_sf1vi")
+Name = "Voronoi"
+BlockTexture = ExtResource("2_qwcee")
+BacksideTexture = ExtResource("1_kybbl")
+metadata/_custom_type_script = "uid://dhj3wd1joua2f"

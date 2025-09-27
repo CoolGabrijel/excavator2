@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://1gimwflnuwmj"]
 
-[ext_resource type="Resource" uid="uid://gu8qsyta7aac" path="res://ores/Iron.tres" id="1_6s6ed"]
+[ext_resource type="Resource" uid="uid://d2d151apvlo6d" path="res://ores/Silver.tres" id="1_ud7q6"]
 [ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="2_ud7q6"]
 
 [sub_resource type="GDScript" id="GDScript_n2hss"]
@@ -102,30 +102,26 @@ func _exit_tree() -> void:
 			noise.changed.disconnect(update_gen)
 "
 
-[sub_resource type="Gradient" id="Gradient_6s6ed"]
-offsets = PackedFloat32Array(0.712329, 1)
+[sub_resource type="Gradient" id="Gradient_ud7q6"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
-seed = 194934062
-frequency = 0.1144
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkvw7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]
 width = 64
 height = 64
-generate_mipmaps = false
-color_ramp = SubResource("Gradient_6s6ed")
-noise = SubResource("FastNoiseLite_ud7q6")
+noise = SubResource("FastNoiseLite_i7x3i")
+color_ramp = SubResource("Gradient_ud7q6")
 
 [node name="TestOreGen" type="Node2D"]
 script = SubResource("GDScript_n2hss")
-ore_to_test = ExtResource("1_6s6ed")
+ore_to_test = ExtResource("1_ud7q6")
 
 [node name="NoiseVisual" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(0, 512)
 scale = Vector2(16, 16)
-texture = SubResource("NoiseTexture2D_mkvw7")
+texture = SubResource("NoiseTexture2D_af3ny")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1032.0

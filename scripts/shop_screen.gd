@@ -28,7 +28,7 @@ func update_upgrades() -> void:
 func get_buttons(target: Control) -> Array[Button]:
 	var buttons : Array[Button]
 	
-	for child in upgrade_fuel.get_children():
+	for child in target.get_children():
 		if child is Button:
 			buttons.append(child)
 	

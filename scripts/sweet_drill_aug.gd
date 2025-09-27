@@ -57,9 +57,17 @@ func handle_sweet_spot() -> void:
 		var spot = filled * $ProgressBar.size.y
 		if spot > $SweetSpot.position.y and spot < $SweetSpot.position.y + $SweetSpot.size.y:
 			#current_grid_position = target_grid_position
-			target_block.mine(2 * player.roll_fortune())
-			hide()
+			sweet_spot_hit(player.target_grid_position)
 
+func sweet_spot_hit(target_pos: Vector2i) -> void:
+	#target_block.mine(2 * player.roll_fortune())
+	
+	var blocks := WorldInstance.get_blocks_in_radius(target_pos, 2)
+	for block in blocks:
+		block.reveal()
+		block.mine(player.roll_fortune())
+	
+	hide()
 
 func grid_to_world_space(grid_pos: Vector2i) -> Vector2:
 	return player.grid_to_world_space(grid_pos)

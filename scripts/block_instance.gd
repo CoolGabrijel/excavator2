@@ -6,6 +6,7 @@ class_name BlockInstance
 
 @onready var front: Sprite2D = $Front
 @onready var back: Sprite2D = $Back
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var mined := false
 var curtainTween : Tween
@@ -21,13 +22,24 @@ func _ready() -> void:
 	
 	front.texture = template.BlockTexture
 	back.texture = template.BacksideTexture
+	animated_sprite.hide()
 	
 	#reveal()
 
 func set_template(new_template: BlockTemplate) -> void:
 	template = new_template
-	front.texture = template.BlockTexture
-	back.texture = template.BacksideTexture
+	
+	if template.BlockTexture:
+		front.texture = template.BlockTexture
+	if template.BacksideTexture:
+		back.texture = template.BacksideTexture
+	
+	if new_template.BlockAnimation:
+		animated_sprite.sprite_frames = new_template.BlockAnimation
+		animated_sprite.show()
+		animated_sprite.play("default")
+	else:
+		animated_sprite.hide()
 
 func mine(amount: int) -> void:
 	mined = true
