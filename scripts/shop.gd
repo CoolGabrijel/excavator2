@@ -8,7 +8,7 @@ static var fortune_amount: int = 0
 static var fortune_freq: int = 3
 
 static var sweet_drilling_bought: bool = false
-static var sweet_drilling_size: int = 2
+static var sweet_drilling_size: int = 0
 static var sweet_drilling_freq: int = 0
 
 static var scan_bought: bool = false
