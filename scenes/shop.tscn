@@ -129,18 +129,18 @@ layout_mode = 2
 
 [node name="Button2" parent="HBoxContainer/StatUpgrades/Upgrade" index="3"]
 cost = Dictionary[String, int]({
-"Eyerön": 2,
+"Eyerhon": 2,
 "Qapur": 7
 })
 
 [node name="Button3" parent="HBoxContainer/StatUpgrades/Upgrade" index="4"]
 cost = Dictionary[String, int]({
-"Eyerön": 3
+"Eyerhon": 3
 })
 
 [node name="Button4" parent="HBoxContainer/StatUpgrades/Upgrade" index="5"]
 cost = Dictionary[String, int]({
-"Eyerön": 4
+"Eyerhon": 4
 })
 
 [node name="Upgrade2" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
@@ -353,7 +353,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
 text = "Scanner"
 script = ExtResource("5_2fc2m")
 cost = Dictionary[String, int]({
-"Eyerön": 5
+"Eyerhon": 5
 })
 
 [node name="Button3" type="Button" parent="HBoxContainer/Augments"]
@@ -364,7 +364,7 @@ text = "Fortune"
 script = ExtResource("5_2fc2m")
 type = 1
 cost = Dictionary[String, int]({
-"Eyerön": 5
+"Eyerhon": 5
 })
 
 [node name="Btn_Dive" type="Button" parent="."]
