@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyhqnkd71yy86"]
+
+[sub_resource type="GDScript" id="GDScript_ogpij"]
+resource_name = "pickup_bubble"
+script/source = "extends HBoxContainer
+
+static var rng = RandomNumberGenerator.new()
+
+var shake_intensity := 1
+var expected_height := 0
+var ore_amount = 1
+
+func _ready() -> void:
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.tween_property(self, \"expected_height\", 75, 1)
+	tween.tween_property(self, \"modulate\", Color.TRANSPARENT, 2).finished.connect(func(): queue_free())
+
+func _process(_delta: float) -> void:
+	position.x = 0
+	position.y = -expected_height
+	var shake := Vector2(rng.randf_range(0, ore_amount-1), rng.randf_range(0, ore_amount-1))
+	position += shake * shake_intensity
+	
+"
+
+[node name="Pickup" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_ogpij")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+text = "+2 Iron"

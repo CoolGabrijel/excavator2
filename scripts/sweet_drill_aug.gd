@@ -62,10 +62,24 @@ func handle_sweet_spot() -> void:
 func sweet_spot_hit(target_pos: Vector2i) -> void:
 	#target_block.mine(2 * player.roll_fortune())
 	
+	var ore_mined : Dictionary[String, int]
+	
 	var blocks := WorldInstance.get_blocks_in_radius(target_pos, 2)
 	for block in blocks:
 		block.reveal()
-		block.mine(player.roll_fortune())
+		var fortune := player.roll_fortune()
+		block.mine(fortune)
+		
+		if block.template is not OreGen:
+			continue
+		
+		if ore_mined.has(block.template.Name):
+			ore_mined[block.template.Name] += fortune
+		else:
+			ore_mined[block.template.Name] = fortune
+	
+	for ore in ore_mined:
+		player.ore_mined.emit(ore, ore_mined[ore])
 	
 	hide()
 

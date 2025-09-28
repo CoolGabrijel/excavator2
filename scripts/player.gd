@@ -1,6 +1,8 @@
 extends Node2D
 class_name Player
 
+signal ore_mined(ore, amount)
+
 @onready var gfx: Node2D = $Gfx
 @onready var sprite_2d: Sprite2D = $Gfx/Sprite2D
 @onready var sparks: GPUParticles2D = $Gfx/Sparks
@@ -86,8 +88,11 @@ func handle_movement(delta: float) -> void:
 		current_grid_position = target_grid_position
 		WorldInstance.reveal_radius(current_grid_position, 2 + Shop.scan_radius)
 		if target_block.can_mine() and !target_block.mined:
-			target_block.mine(roll_fortune())
+			var fortune := roll_fortune()
+			target_block.mine(fortune)
 			fuel -=1
+			if target_block.template is OreGen:
+				ore_mined.emit(target_block.template.Name, fortune)
 	
 	if movement_input.length() == 0 and !target_block.mined:
 		# Player let go of movement keys. Bring him back

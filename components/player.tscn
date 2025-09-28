@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://y2kx1fl6aftx"]
+[gd_scene load_steps=16 format=3 uid="uid://y2kx1fl6aftx"]
 
 [ext_resource type="Texture2D" uid="uid://dsh8mb656eopf" path="res://textures/player.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://l8hr1my2a8si" path="res://scripts/player.gd" id="1_51jd6"]
 [ext_resource type="Script" uid="uid://ddnfjlsstu884" path="res://scripts/sweet_drill_aug.gd" id="3_5odhx"]
 [ext_resource type="PackedScene" uid="uid://c60pjop27p8gt" path="res://components/debug_pos.tscn" id="3_uapwn"]
+[ext_resource type="Script" uid="uid://t2j6fe8hxmie" path="res://scripts/pickup_notifier.gd" id="5_1kub6"]
+[ext_resource type="PackedScene" uid="uid://cyhqnkd71yy86" path="res://components/pickup.tscn" id="6_kuobi"]
 
 [sub_resource type="Curve" id="Curve_5odhx"]
 _data = [Vector2(0, 1), 0.0, -3.0, 0, 1, Vector2(0.2, 0.4), -0.70539856, -0.70539856, 0, 0, Vector2(1, 0), -0.5, 0.0, 1, 0]
@@ -117,13 +119,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="DebugPos" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_uapwn")]
+[node name="DebugPos" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("3_uapwn")]
 mouse_filter = 2
 player = NodePath("../..")
 
-[node name="FuelDisplay" type="Control" parent="CanvasLayer"]
+[node name="FuelDisplay" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -134,8 +136,26 @@ grow_vertical = 0
 mouse_filter = 2
 script = SubResource("GDScript_5odhx")
 
-[node name="Label" type="Label" parent="CanvasLayer/FuelDisplay"]
+[node name="Label" type="Label" parent="GUI/FuelDisplay"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 24.0
 text = "Fuel: 15"
+
+[node name="PickupNotifier" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = 15.0
+offset_right = 69.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_1kub6")
+pickup_template = ExtResource("6_kuobi")
+
+[connection signal="ore_mined" from="." to="GUI/PickupNotifier" method="spawn_pickup"]
