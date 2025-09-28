@@ -49,7 +49,22 @@ func _pressed() -> void:
 	Inventory.remove_ores(cost)
 
 func update_tooltip(total_cost) -> void:
-	tooltip_text = "Cost: \n"
+	tooltip_text = ""
+	
+	match type:
+		AugType.Scanner:
+			tooltip_text += "Attach a scanner which allows you to reveal ores in a radius.\n"
+			tooltip_text += "Use the Mouse to aim and Left click to Scan\n"
+		AugType.Fortune:
+			tooltip_text += "Drillhead is more precise. Grants a chance to get more yield.\n"
+		AugType.SweetDrill:
+			tooltip_text += "Certain ores have weakspots. This analyzes them and mines anything\n"
+			tooltip_text += "in a radius around the spot of the weakness.\n"
+			tooltip_text += "When mining there is a chance for a bar to appear. When you let go\n"
+			tooltip_text += "as soon as the bar reaches the 'sweet spot', you mine in a radius.\n"
+	
+	tooltip_text += "\n"
+	tooltip_text += "Cost: \n"
 	for ingredient in total_cost:
 		tooltip_text += ingredient + " "
 		var amount_in_inv : int = 0

@@ -3,7 +3,7 @@ class_name Shop
 
 static var fuel_eff: int = 0
 
-static var fortune_bought
+static var fortune_bought: bool = false
 static var fortune_amount: int = 0
 static var fortune_freq: int = 3
 

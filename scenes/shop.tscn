@@ -127,6 +127,22 @@ vertical_alignment = 1
 [node name="Upgrade" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
 
+[node name="Button2" parent="HBoxContainer/StatUpgrades/Upgrade" index="3"]
+cost = Dictionary[String, int]({
+"Eyerön": 2,
+"Qapur": 7
+})
+
+[node name="Button3" parent="HBoxContainer/StatUpgrades/Upgrade" index="4"]
+cost = Dictionary[String, int]({
+"Eyerön": 3
+})
+
+[node name="Button4" parent="HBoxContainer/StatUpgrades/Upgrade" index="5"]
+cost = Dictionary[String, int]({
+"Eyerön": 4
+})
+
 [node name="Upgrade2" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
 layout_mode = 2
 script = ExtResource("3_032fp")
@@ -332,7 +348,24 @@ cost = Dictionary[String, int]({
 
 [node name="Button2" type="Button" parent="HBoxContainer/Augments"]
 layout_mode = 2
-text = "Dowsing Rod"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ajxib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
+text = "Scanner"
+script = ExtResource("5_2fc2m")
+cost = Dictionary[String, int]({
+"Eyerön": 5
+})
+
+[node name="Button3" type="Button" parent="HBoxContainer/Augments"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ajxib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
+text = "Fortune"
+script = ExtResource("5_2fc2m")
+type = 1
+cost = Dictionary[String, int]({
+"Eyerön": 5
+})
 
 [node name="Btn_Dive" type="Button" parent="."]
 layout_mode = 1
@@ -350,3 +383,5 @@ grow_vertical = 0
 text = "Dive Again"
 
 [connection signal="pressed" from="Btn_Dive" to="." method="dive_again"]
+
+[editable path="HBoxContainer/StatUpgrades/Upgrade"]
