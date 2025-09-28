@@ -1,11 +1,12 @@
 extends Button
 class_name UpgradeButton
 
-enum UpgradeType {Fuel, Scanner, Fortune_Amount, Fortune_Freq}
-
-@export var type : UpgradeType
 @export var cost : Dictionary[String, int]
 @onready var shop: Control = $"../../../.."
+
+var type: StatUpgrade.UpgradeType:
+	get:
+		return $"..".type
 
 func _physics_process(_delta: float) -> void:
 	if get_upgrade_index() > get_child_index():
@@ -31,9 +32,9 @@ func _pressed() -> void:
 	var index = get_child_index()+1
 	
 	match type:
-		UpgradeType.Fuel:
+		StatUpgrade.UpgradeType.Fuel:
 			Shop.fuel_eff = index
-		UpgradeType.Fortune_Freq:
+		StatUpgrade.UpgradeType.Fortune_Freq:
 			Shop.fortune_freq = index
 	
 	Inventory.remove_ores(cost)
@@ -60,11 +61,11 @@ func get_total_cost() -> Dictionary[String, int]:
 	return final_cost
 
 func get_upgrade_index() -> int:
-	if type == UpgradeType.Fuel:
+	if type == StatUpgrade.UpgradeType.Fuel:
 		return Shop.fuel_eff
-	if type == UpgradeType.Fortune_Freq:
+	if type == StatUpgrade.UpgradeType.Fortune_Freq:
 		return Shop.fortune_freq
-	if type == UpgradeType.Fortune_Amount:
+	if type == StatUpgrade.UpgradeType.Fortune_Amount:
 		return Shop.fortune_amount
 	return 0
 

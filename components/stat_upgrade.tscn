@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwk7twssgy063"]
+
+[ext_resource type="Script" uid="uid://b7raphcfoi3wi" path="res://scripts/stat_upgrade.gd" id="1_tb4wv"]
+[ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="2_axbjy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
+bg_color = Color(0.338, 0.5252, 0.65, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx5au"]
+bg_color = Color(0.800427, 0.940712, 0.964975, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Upgrade" type="HBoxContainer"]
+tooltip_text = "Upgrade Starting Fuel Amount"
+script = ExtResource("1_tb4wv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Empty" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+script = ExtResource("2_axbjy")
+cost = Dictionary[String, int]({
+"Qapur": 5
+})
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+script = ExtResource("2_axbjy")
+cost = Dictionary[String, int]({
+"Iron Ore": 2
+})
+
+[node name="Button3" type="Button" parent="."]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
+disabled = true
+script = ExtResource("2_axbjy")
+cost = Dictionary[String, int]({
+"Iron Ore": 3
+})
+
+[node name="Button4" type="Button" parent="."]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_032fp")
+disabled = true
+script = ExtResource("2_axbjy")
+cost = Dictionary[String, int]({
+"Iron Ore": 4
+})

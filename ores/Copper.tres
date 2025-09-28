@@ -9,7 +9,7 @@ offsets = PackedFloat32Array(0.62, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
-seed = -1680368792
+seed = 1623621607
 frequency = 0.0855
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]

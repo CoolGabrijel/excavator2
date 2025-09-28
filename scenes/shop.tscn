@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dten3tw28j4f8"]
+[gd_scene load_steps=13 format=3 uid="uid://dten3tw28j4f8"]
 
 [ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://dwk7twssgy063" path="res://components/stat_upgrade.tscn" id="2_1l46r"]
 [ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="2_xfvoa"]
+[ext_resource type="Script" uid="uid://b7raphcfoi3wi" path="res://scripts/stat_upgrade.gd" id="3_032fp"]
+[ext_resource type="Script" uid="uid://4agxt25yl8dy" path="res://scripts/upgrade_aug.gd" id="5_2fc2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.338, 0.5252, 0.65, 1)
@@ -11,6 +14,10 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx5au"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.800427, 0.940712, 0.964975, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -18,6 +25,10 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -27,13 +38,6 @@ corner_radius_bottom_left = 3
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
 bg_color = Color(0, 0, 0, 0.427451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fc2m"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 corner_radius_top_left = 3
@@ -41,7 +45,31 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("upgrade_fuel", "upgrade_fuel_buttons")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxib"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r1wq"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("upgrade_fuel_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,8 +80,7 @@ script = ExtResource("1_lx5au")
 style_bought = SubResource("StyleBoxFlat_xfvoa")
 style_afford = SubResource("StyleBoxFlat_lx5au")
 style_unaffordable = SubResource("StyleBoxFlat_1l46r")
-upgrade_fuel = NodePath("HBoxContainer/StatUpgrades/Upgrade")
-upgrade_fuel_buttons = [NodePath("HBoxContainer/StatUpgrades/Upgrade/Button"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button2"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button3"), NodePath("HBoxContainer/StatUpgrades/Upgrade/Button4")]
+upgrade_fuel_buttons = [null, null, null, null]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -71,7 +98,7 @@ anchor_right = 1.0
 offset_bottom = 38.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_bdmwb")
-text = "SHOP"
+text = "WORKSHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -97,66 +124,13 @@ text = "STAT UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Upgrade" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+[node name="Upgrade" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
-tooltip_text = "Upgrade Starting Fuel Amount"
-
-[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade"]
-layout_mode = 2
-text = "Fuel"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-script = ExtResource("2_xfvoa")
-cost = Dictionary[String, int]({
-"Qapur": 5
-})
-
-[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-script = ExtResource("2_xfvoa")
-cost = Dictionary[String, int]({
-"Iron Ore": 2
-})
-
-[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-disabled = true
-script = ExtResource("2_xfvoa")
-cost = Dictionary[String, int]({
-"Iron Ore": 3
-})
-
-[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_032fp")
-disabled = true
-script = ExtResource("2_xfvoa")
-cost = Dictionary[String, int]({
-"Iron Ore": 4
-})
 
 [node name="Upgrade2" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
 layout_mode = 2
+script = ExtResource("3_032fp")
+type = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade2"]
 layout_mode = 2
@@ -175,7 +149,6 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
-type = 3
 cost = Dictionary[String, int]({
 "Iron Ore": 1
 })
@@ -187,7 +160,6 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
 script = ExtResource("2_xfvoa")
-type = 3
 cost = Dictionary[String, int]({
 "Iron Ore": 1
 })
@@ -199,7 +171,6 @@ mouse_default_cursor_shape = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
 disabled = true
 script = ExtResource("2_xfvoa")
-type = 3
 cost = Dictionary[String, int]({
 "Iron Ore": 1
 })
@@ -211,7 +182,6 @@ mouse_default_cursor_shape = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
 disabled = true
 script = ExtResource("2_xfvoa")
-type = 3
 cost = Dictionary[String, int]({
 "Iron Ore": 1
 })
@@ -351,7 +321,14 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/Augments"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ajxib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
 text = "Sweet Drilling"
+script = ExtResource("5_2fc2m")
+type = 2
+cost = Dictionary[String, int]({
+"Qapur": 5
+})
 
 [node name="Button2" type="Button" parent="HBoxContainer/Augments"]
 layout_mode = 2
