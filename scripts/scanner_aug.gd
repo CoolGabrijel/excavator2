@@ -8,7 +8,7 @@ var mouse_grid_coords: Vector2i
 var cooldown: int = 0
 
 func _ready() -> void:
-	if !Shop.scan_bought:
+	if !Shop.radar_bought:
 		hide()
 		label.text = ""
 		return
@@ -16,7 +16,7 @@ func _ready() -> void:
 	show()
 
 func _process(_delta: float) -> void:
-	if !Shop.scan_bought:
+	if !Shop.radar_bought:
 		return
 	
 	mouse_world_coords = get_viewport().get_camera_2d().get_global_mouse_position()
@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		label.text = str("Scanner Cooldown: ", cooldown)
 
 func block_mined(_block: BlockInstance):
-	if !Shop.scan_bought:
+	if !Shop.radar_bought:
 		label.text = ""
 		return
 	

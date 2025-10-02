@@ -11,7 +11,7 @@ var bought: bool:
 	get:
 		match type:
 			AugType.Scanner:
-				return Shop.scan_bought
+				return Shop.radar_bought
 			AugType.Fortune:
 				return Shop.fortune_bought
 			AugType.SweetDrill:
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 func _pressed() -> void:
 	match type:
 		AugType.Scanner:
-			Shop.scan_bought = true
+			Shop.radar_bought = true
 		AugType.Fortune:
 			Shop.fortune_bought = true
 		AugType.SweetDrill:
@@ -53,13 +53,12 @@ func update_tooltip(total_cost) -> void:
 	
 	match type:
 		AugType.Scanner:
-			tooltip_text += "Attach a scanner which allows you to reveal ores in a radius.\n"
+			tooltip_text += "Attach a scanner which allows you to reveal ores in a radius.\n\n"
 			tooltip_text += "Use the Mouse to aim and Left click to Scan\n"
 		AugType.Fortune:
 			tooltip_text += "Drillhead is more precise. Grants a chance to get more yield.\n"
 		AugType.SweetDrill:
-			tooltip_text += "Certain ores have weakspots. This analyzes them and mines anything\n"
-			tooltip_text += "in a radius around the spot of the weakness.\n"
+			tooltip_text += "Find and exploit Ore weakspots.\n\n"
 			tooltip_text += "When mining there is a chance for a bar to appear. When you let go\n"
 			tooltip_text += "as soon as the bar reaches the 'sweet spot', you mine in a radius.\n"
 	

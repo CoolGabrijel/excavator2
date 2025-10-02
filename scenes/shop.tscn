@@ -350,7 +350,7 @@ cost = Dictionary[String, int]({
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ajxib")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
-text = "Scanner"
+text = "Radar"
 script = ExtResource("5_2fc2m")
 cost = Dictionary[String, int]({
 "Eyerhon": 5
