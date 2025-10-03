@@ -88,3 +88,8 @@ script = ExtResource("2_axbjy")
 cost = Dictionary[String, int]({
 "Iron Ore": 4
 })
+
+[node name="Pin" type="Button" parent="."]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+tooltip_text = "Pin Ingredients"
