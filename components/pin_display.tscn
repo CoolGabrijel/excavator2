@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://c01d2kvhwa6yv"]
+
+[ext_resource type="Script" uid="uid://bcgxxwbvqg5e5" path="res://scripts/pin_display.gd" id="1_ss8et"]
+
+[node name="PinDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ss8et")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -251.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 299.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Header" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 3.0
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "Upgrade Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -115.5
+offset_bottom = -111.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Costs" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 38.0
+offset_right = -7.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=green]1/1 Qapur [/color]
+0/2 Eyerhon
+0/3 Goaled
+0/4 Youraeneeyum
+0/5 Tit Ayyneium"
