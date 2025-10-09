@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwk7twssgy063"]
+[gd_scene load_steps=8 format=3 uid="uid://dwk7twssgy063"]
 
 [ext_resource type="Script" uid="uid://b7raphcfoi3wi" path="res://scripts/stat_upgrade.gd" id="1_tb4wv"]
 [ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="2_axbjy"]
+[ext_resource type="Texture2D" uid="uid://omml6cvyysw5" path="res://textures/pin.tres" id="3_axbjy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.338, 0.5252, 0.65, 1)
@@ -93,3 +94,5 @@ cost = Dictionary[String, int]({
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 tooltip_text = "Pin Ingredients"
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_axbjy")

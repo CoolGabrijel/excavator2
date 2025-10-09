@@ -6,6 +6,7 @@ extends Control
 @onready var player: Player = $".."
 @onready var progress_bar: ProgressBar = $Bar/ProgressBar
 @onready var detail: TextureRect = $Bar/Detail
+@onready var hitGraphic: ColorRect = $ColorRect
 
 var ores_tested : Dictionary[Vector2i, bool]
 var ores_missed : Array[Vector2i]
@@ -78,6 +79,7 @@ func handle_sweet_spot() -> void:
 			sweet_spot_miss(player.target_grid_position)
 	
 	detail.position.y = spot - detail.size.y
+	hitGraphic.position.y = spot - hitGraphic.size.y
 
 func sweet_spot_hit(target_pos: Vector2i) -> void:
 	#target_block.mine(2 * player.roll_fortune())

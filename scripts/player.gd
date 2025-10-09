@@ -5,7 +5,7 @@ signal block_mined(block)
 signal ore_mined(ore, amount)
 
 @onready var gfx: Node2D = $Gfx
-@onready var sprite_2d: Sprite2D = $Gfx/Sprite2D
+@onready var sprite: AnimatedSprite2D = $Gfx/AnimatedSprite2D
 @onready var sparks: GPUParticles2D = $Gfx/Sparks
 
 @export var speed: float = 1
@@ -70,6 +70,13 @@ func handle_movement(delta: float) -> void:
 		dir = Vector2.DOWN
 		#sprite_2d.frame = 2
 		gfx.rotation_degrees = 0
+	
+	# For Animation
+	if movement_input.length() > 0:
+		if !sprite.is_playing():
+			sprite.play("default")
+	else:
+		sprite.stop()
 	
 	if !WorldInstance.blocks.has(target_grid_position):
 		return
