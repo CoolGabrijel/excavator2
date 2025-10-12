@@ -76,7 +76,7 @@ func handle_sweet_spot() -> void:
 		if spot > $SweetSpot.position.y + forgiveness and spot < $SweetSpot.position.y + $SweetSpot.size.y + forgiveness:
 			#current_grid_position = target_grid_position
 			sweet_spot_hit(player.target_grid_position)
-		else:
+		elif player.movement_progress > 0:
 			sweet_spot_miss(player.target_grid_position)
 	
 	detail.position.y = spot - detail.size.y
@@ -89,7 +89,6 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 	
 	var blocks := WorldInstance.get_blocks_in_radius(target_pos, 2)
 	for block in blocks:
-		block.reveal()
 		var fortune := player.roll_fortune()
 		block.mine(fortune)
 		
@@ -103,6 +102,8 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 	
 	for ore in ore_mined:
 		player.ore_mined.emit(ore, ore_mined[ore])
+	
+	WorldInstance.reveal_radius(target_pos, 3)
 	
 	hide()
 
