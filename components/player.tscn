@@ -114,7 +114,8 @@ func _physics_process(_delta: float) -> void:
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_51jd6")
-speed = 17.5
+speed = 0.015
+speed_mined_modifier = 3.25
 
 [node name="Gfx" type="Node2D" parent="."]
 
@@ -182,8 +183,9 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_uapwn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5odhx")
-max_value = 8.0
-value = 4.0
+max_value = 0.5
+step = 0.001
+value = 0.5
 fill_mode = 2
 show_percentage = false
 

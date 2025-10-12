@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dten3tw28j4f8"]
+[gd_scene load_steps=12 format=3 uid="uid://dten3tw28j4f8"]
 
 [ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://dwk7twssgy063" path="res://components/stat_upgrade.tscn" id="2_1l46r"]
@@ -37,13 +37,6 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
 bg_color = Color(0, 0, 0, 0.427451)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fc2m"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxib"]
 content_margin_left = 2.0
@@ -170,128 +163,10 @@ cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Upgrade3" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
+[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-layout_mode = 2
-text = "Starting Depth"
+text = "More Augments -> More Upgrades"
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
-
-[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade3"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
-
-[node name="Upgrade4" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-layout_mode = 2
-text = "Sweet Size"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
-
-[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade4"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
-
-[node name="Upgrade5" type="HBoxContainer" parent="HBoxContainer/StatUpgrades"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-layout_mode = 2
-text = "Sweet Frequency"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Empty" type="Label" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button2" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lx5au")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1l46r")
-
-[node name="Button3" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
-
-[node name="Button4" type="Button" parent="HBoxContainer/StatUpgrades/Upgrade5"]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_2fc2m")
-disabled = true
 
 [node name="Augments" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2

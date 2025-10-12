@@ -27,7 +27,6 @@ func handle_sweet_spot() -> void:
 	
 	var target_block := WorldInstance.blocks[player.target_grid_position]
 	var movement_input := player.movement_input
-	var current_grid_position := player.current_grid_position
 	
 	if target_block.template is not OreGen:
 		hide()
@@ -63,15 +62,17 @@ func handle_sweet_spot() -> void:
 	var filled = progress_bar.value / progress_bar.max_value
 	var spot = filled * progress_bar.size.y
 	
-	if movement_input.y > 0:
-		progress_bar.value = (grid_to_world_space(current_grid_position) - player.position).y
-	elif movement_input.y < 0:
-		progress_bar.value = (player.position - grid_to_world_space(current_grid_position)).y
-	elif movement_input.x > 0:
-		progress_bar.value = (player.position - grid_to_world_space(current_grid_position)).x
-	elif movement_input.x < 0:
-		progress_bar.value = (grid_to_world_space(current_grid_position) - player.position).x
-	elif movement_input.length() == 0:
+	progress_bar.value = player.movement_progress
+	
+	#if movement_input.y > 0:
+		#progress_bar.value = (grid_to_world_space(current_grid_position) - player.position).y
+	#elif movement_input.y < 0:
+		#progress_bar.value = (player.position - grid_to_world_space(current_grid_position)).y
+	#elif movement_input.x > 0:
+		#progress_bar.value = (player.position - grid_to_world_space(current_grid_position)).x
+	#elif movement_input.x < 0:
+		#progress_bar.value = (grid_to_world_space(current_grid_position) - player.position).x
+	if movement_input.length() == 0:
 		if spot > $SweetSpot.position.y + forgiveness and spot < $SweetSpot.position.y + $SweetSpot.size.y + forgiveness:
 			#current_grid_position = target_grid_position
 			sweet_spot_hit(player.target_grid_position)
