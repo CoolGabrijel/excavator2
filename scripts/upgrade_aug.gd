@@ -1,3 +1,4 @@
+class_name UpgradeAug
 extends Button
 
 enum AugType {Scanner, Fortune, SweetDrill}
@@ -5,7 +6,7 @@ enum AugType {Scanner, Fortune, SweetDrill}
 @export var type : AugType
 @export var cost : Dictionary[String, int]
 
-@onready var shop: Control = $"../../.."
+@onready var shop: Control = $"../../../.."
 
 var bought: bool:
 	get:
@@ -20,7 +21,7 @@ var bought: bool:
 				return true
 
 func _process(_delta: float) -> void:
-	visible = !bought
+	get_parent().visible = !bought
 	
 	update_tooltip(cost)
 	
@@ -47,6 +48,9 @@ func _pressed() -> void:
 			Shop.sweet_drilling_bought = true
 	
 	Inventory.remove_ores(cost)
+	
+	if PinDisplay.current_upgrade_name == text:
+		PinDisplay.instance.remove_pin()
 
 func update_tooltip(total_cost) -> void:
 	tooltip_text = ""

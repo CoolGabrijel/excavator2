@@ -15,13 +15,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	update_display()
 
-func pin_recipe(upgrade_name: String, recipe: Dictionary[String, int]):
+func remove_pin() -> void:
+	current_upgrade_name = ""
+	hide()
+
+func pin_recipe(upgrade_name: String, recipe: Dictionary[String, int]) -> void:
 	current_recipe = recipe
 	current_upgrade_name = upgrade_name
 	update_display()
 
-func update_display():
-	if current_recipe == null || current_recipe.is_empty():
+func update_display() -> void:
+	if current_recipe == null || current_recipe.is_empty() || current_upgrade_name == "":
 		hide()
 		return
 	else:

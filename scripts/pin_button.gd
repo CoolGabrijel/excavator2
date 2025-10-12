@@ -1,6 +1,9 @@
 extends Button
 
-@onready var label: Label = $"../Label"
+var label: Label
+
+func _ready() -> void:
+	label = get_parent().get_node_or_null("Label")
 
 func _pressed() -> void:
 	var parent := get_parent()
@@ -10,3 +13,8 @@ func _pressed() -> void:
 			if child.tooltip_text != "BOUGHT":
 				PinDisplay.instance.pin_recipe(label.text, child.cost)
 				return
+		elif child is UpgradeAug:
+			PinDisplay.instance.pin_recipe(child.text, child.cost)
+			return
+	
+	

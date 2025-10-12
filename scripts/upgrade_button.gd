@@ -39,6 +39,10 @@ func _pressed() -> void:
 	
 	Inventory.remove_ores(cost)
 	update_tooltip(cost)
+	
+	if PinDisplay.current_upgrade_name == $"../Label".text:
+		PinDisplay.instance.remove_pin()
+	
 
 func get_total_cost() -> Dictionary[String, int]:
 	var final_cost : Dictionary[String, int]
