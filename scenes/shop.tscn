@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dten3tw28j4f8"]
+[gd_scene load_steps=15 format=3 uid="uid://dten3tw28j4f8"]
 
 [ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://dwk7twssgy063" path="res://components/stat_upgrade.tscn" id="2_1l46r"]
+[ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="3_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://omml6cvyysw5" path="res://textures/pin.tres" id="4_2fc2m"]
 [ext_resource type="Script" uid="uid://4agxt25yl8dy" path="res://scripts/upgrade_aug.gd" id="5_2fc2m"]
 [ext_resource type="Script" uid="uid://b2h1h424n70wo" path="res://scripts/pin_button.gd" id="5_8r1wq"]
@@ -37,6 +38,20 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdmwb"]
 bg_color = Color(0, 0, 0, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6sft"]
+bg_color = Color(0.338, 0.5252, 0.65, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ofw"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxib"]
 content_margin_left = 2.0
@@ -117,48 +132,64 @@ text = "STAT UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Upgrade" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+[node name="Fuel" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
 
-[node name="Button2" parent="HBoxContainer/StatUpgrades/Upgrade" index="3"]
+[node name="Button" parent="HBoxContainer/StatUpgrades/Fuel" index="2"]
 cost = Dictionary[String, int]({
-"Eyerhon": 2,
-"Qapur": 7
+"Qapur": 4
 })
 
-[node name="Button3" parent="HBoxContainer/StatUpgrades/Upgrade" index="4"]
+[node name="Button2" parent="HBoxContainer/StatUpgrades/Fuel" index="3"]
+cost = Dictionary[String, int]({
+"Eyerhon": 2,
+"Qapur": 10
+})
+
+[node name="Button3" parent="HBoxContainer/StatUpgrades/Fuel" index="4"]
 cost = Dictionary[String, int]({
 "Eyerhon": 3
 })
 
-[node name="Button4" parent="HBoxContainer/StatUpgrades/Upgrade" index="5"]
+[node name="Button4" parent="HBoxContainer/StatUpgrades/Fuel" index="5"]
 cost = Dictionary[String, int]({
 "Eyerhon": 4
 })
 
-[node name="Upgrade2" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+[node name="Button5" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Qapur": 8
+})
+
+[node name="Fortune" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
 type = 3
 
-[node name="Label" parent="HBoxContainer/StatUpgrades/Upgrade2" index="0"]
+[node name="Label" parent="HBoxContainer/StatUpgrades/Fortune" index="0"]
 text = "Fortune Freq."
 
-[node name="Button" parent="HBoxContainer/StatUpgrades/Upgrade2" index="2"]
+[node name="Button" parent="HBoxContainer/StatUpgrades/Fortune" index="2"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button2" parent="HBoxContainer/StatUpgrades/Upgrade2" index="3"]
+[node name="Button2" parent="HBoxContainer/StatUpgrades/Fortune" index="3"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button3" parent="HBoxContainer/StatUpgrades/Upgrade2" index="4"]
+[node name="Button3" parent="HBoxContainer/StatUpgrades/Fortune" index="4"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button4" parent="HBoxContainer/StatUpgrades/Upgrade2" index="5"]
+[node name="Button4" parent="HBoxContainer/StatUpgrades/Fortune" index="5"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
@@ -266,5 +297,5 @@ text = "Dive Again"
 
 [connection signal="pressed" from="Btn_Dive" to="." method="dive_again"]
 
-[editable path="HBoxContainer/StatUpgrades/Upgrade"]
-[editable path="HBoxContainer/StatUpgrades/Upgrade2"]
+[editable path="HBoxContainer/StatUpgrades/Fuel"]
+[editable path="HBoxContainer/StatUpgrades/Fortune"]

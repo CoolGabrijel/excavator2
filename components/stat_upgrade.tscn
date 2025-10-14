@@ -33,9 +33,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Upgrade" type="HBoxContainer"]
+[node name="Upgrade" type="HBoxContainer" node_paths=PackedStringArray("pin_button")]
 tooltip_text = "Upgrade Starting Fuel Amount"
 script = ExtResource("1_tb4wv")
+pin_button = NodePath("Pin")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

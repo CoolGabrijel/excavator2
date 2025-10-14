@@ -48,13 +48,14 @@ func mine(amount: int) -> void:
 		Inventory.add_ore(template.Name, amount)
 	
 	front.hide()
+	animated_sprite.hide()
 
 func reveal() -> void:
 	if curtainTween:
 		curtainTween.kill()
 	
 	curtainTween = create_tween()
-	curtainTween.tween_property(self, "modulate", Color.WHITE, 1)
+	curtainTween.tween_property(self, "modulate", Color.WHITE, 0.5)
 
 func can_mine() -> bool:
 	return true

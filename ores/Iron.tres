@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="3_huo8c"]
 
 [sub_resource type="Gradient" id="Gradient_6s6ed"]
-offsets = PackedFloat32Array(0.7133333, 0.88)
+offsets = PackedFloat32Array(0.7133333, 0.8466667)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
 noise_type = 2
-seed = 164691106
+seed = 195727277
 frequency = 0.1634
 fractal_type = 0
 
@@ -22,7 +22,7 @@ noise = SubResource("FastNoiseLite_ud7q6")
 color_ramp = SubResource("Gradient_6s6ed")
 
 [sub_resource type="Gradient" id="Gradient_mkvw7"]
-offsets = PackedFloat32Array(0.16455697, 0.278481, 0.46835443, 0.7531645)
+offsets = PackedFloat32Array(0.16455697, 0.278481, 0.5506329, 0.8101266)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.9277623, 1, 1, 1, 0)
 
 [resource]
