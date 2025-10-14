@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 
 func handle_sweet_spot() -> void:
 	if !Shop.sweet_drilling_bought:
+		hide()
 		return
 	
 	if !WorldInstance.blocks.has(player.target_grid_position):
