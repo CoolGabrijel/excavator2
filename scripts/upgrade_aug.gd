@@ -1,7 +1,7 @@
 class_name UpgradeAug
 extends Button
 
-enum AugType {Scanner, Fortune, SweetDrill}
+enum AugType {Radar, Fortune, SweetDrill}
 
 @export var type : AugType
 @export var cost : Dictionary[String, int]
@@ -11,7 +11,7 @@ enum AugType {Scanner, Fortune, SweetDrill}
 var bought: bool:
 	get:
 		match type:
-			AugType.Scanner:
+			AugType.Radar:
 				return Shop.radar_bought
 			AugType.Fortune:
 				return Shop.fortune_bought
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 
 func _pressed() -> void:
 	match type:
-		AugType.Scanner:
+		AugType.Radar:
 			Shop.radar_bought = true
 		AugType.Fortune:
 			Shop.fortune_bought = true
@@ -56,8 +56,8 @@ func update_tooltip(total_cost) -> void:
 	tooltip_text = ""
 	
 	match type:
-		AugType.Scanner:
-			tooltip_text += "Attach a scanner which allows you to reveal ores in a radius.\n\n"
+		AugType.Radar:
+			tooltip_text += "Attach a radar which allows you to reveal ores in a radius.\n\n"
 			tooltip_text += "Use the Mouse to aim and Left click to Scan\n"
 		AugType.Fortune:
 			tooltip_text += "Drillhead is more precise. Grants a chance to get more yield.\n"

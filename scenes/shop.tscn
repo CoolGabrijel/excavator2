@@ -167,32 +167,57 @@ cost = Dictionary[String, int]({
 "Qapur": 8
 })
 
-[node name="Fortune" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+[node name="Scanner" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
+tooltip_text = "Upgrade Vision around your Vessel"
+type = 1
+
+[node name="Label" parent="HBoxContainer/StatUpgrades/Scanner" index="0"]
+text = "Scanner"
+
+[node name="FortuneFreq" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+layout_mode = 2
+tooltip_text = "Upgrade chance for Fortune proc."
 type = 3
 
-[node name="Label" parent="HBoxContainer/StatUpgrades/Fortune" index="0"]
-text = "Fortune Freq."
+[node name="Label" parent="HBoxContainer/StatUpgrades/FortuneFreq" index="0"]
+text = "Fortune Luck"
 
-[node name="Button" parent="HBoxContainer/StatUpgrades/Fortune" index="2"]
+[node name="Button" parent="HBoxContainer/StatUpgrades/FortuneFreq" index="2"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button2" parent="HBoxContainer/StatUpgrades/Fortune" index="3"]
+[node name="Button2" parent="HBoxContainer/StatUpgrades/FortuneFreq" index="3"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button3" parent="HBoxContainer/StatUpgrades/Fortune" index="4"]
+[node name="Button3" parent="HBoxContainer/StatUpgrades/FortuneFreq" index="4"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
 
-[node name="Button4" parent="HBoxContainer/StatUpgrades/Fortune" index="5"]
+[node name="Button4" parent="HBoxContainer/StatUpgrades/FortuneFreq" index="5"]
 cost = Dictionary[String, int]({
 "Qapur": 1
 })
+
+[node name="FortuneAmount" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+layout_mode = 2
+tooltip_text = "Upgrade how much extra ore you get on Fortune proc."
+type = 2
+
+[node name="Label" parent="HBoxContainer/StatUpgrades/FortuneAmount" index="0"]
+text = "Fortune Amount"
+
+[node name="Radar" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
+layout_mode = 2
+tooltip_text = "Upgrade how many blocks Radar reveals"
+type = 4
+
+[node name="Label" parent="HBoxContainer/StatUpgrades/Radar" index="0"]
+text = "Radar"
 
 [node name="Label" type="Label" parent="HBoxContainer/StatUpgrades"]
 layout_mode = 2
@@ -221,6 +246,7 @@ text = "Sweet Drilling"
 script = ExtResource("5_2fc2m")
 type = 2
 cost = Dictionary[String, int]({
+"Eyerhon": 5,
 "Qapur": 5
 })
 
@@ -244,7 +270,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
 text = "Radar"
 script = ExtResource("5_2fc2m")
 cost = Dictionary[String, int]({
-"Eyerhon": 5
+"Eyerhon": 10
 })
 
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Radar"]
@@ -268,7 +294,8 @@ text = "Fortune"
 script = ExtResource("5_2fc2m")
 type = 1
 cost = Dictionary[String, int]({
-"Eyerhon": 5
+"Eyerhon": 5,
+"Seelvher": 5
 })
 
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Fortune"]
@@ -298,4 +325,7 @@ text = "Dive Again"
 [connection signal="pressed" from="Btn_Dive" to="." method="dive_again"]
 
 [editable path="HBoxContainer/StatUpgrades/Fuel"]
-[editable path="HBoxContainer/StatUpgrades/Fortune"]
+[editable path="HBoxContainer/StatUpgrades/Scanner"]
+[editable path="HBoxContainer/StatUpgrades/FortuneFreq"]
+[editable path="HBoxContainer/StatUpgrades/FortuneAmount"]
+[editable path="HBoxContainer/StatUpgrades/Radar"]

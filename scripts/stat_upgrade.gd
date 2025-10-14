@@ -15,5 +15,7 @@ func _process(_delta: float) -> void:
 			visible = Shop.fortune_bought
 		UpgradeType.Fortune_Freq:
 			visible = Shop.fortune_bought
+		UpgradeType.Radar:
+			visible = Shop.radar_bought
 		_:
 			show()

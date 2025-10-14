@@ -38,7 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	var mouse_input: InputEventMouseButton = event
 	if mouse_input.button_index == MOUSE_BUTTON_LEFT and mouse_input.pressed:
-		WorldInstance.reveal_radius(mouse_grid_coords, 2)
+		WorldInstance.reveal_radius(mouse_grid_coords, 2 + Shop.radar_radius)
 		get_viewport().set_input_as_handled()
 		cooldown = 5
 		label.text = str("Scanner Cooldown: ", cooldown)

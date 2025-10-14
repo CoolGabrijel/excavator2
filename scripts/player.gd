@@ -40,14 +40,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatFuel"):
 		fuel += 10
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_capture_movement()
-	handle_movement(delta)
+	handle_movement()
 	position = lerp(position, movement_position_target, 0.1)
 	$CurrentPos.global_position = grid_to_world_space(current_grid_position)
 	$TargetPos.global_position = grid_to_world_space(target_grid_position)
 
-func handle_movement(delta: float) -> void:
+func handle_movement() -> void:
 	if locked or fuel <= 0:
 		return
 	
@@ -103,16 +103,6 @@ func handle_movement(delta: float) -> void:
 		movement_progress += speed * speed_mined_modifier
 		sparks.emitting = false
 	
-	
-	#if is_input_same():
-		#if target_block.template is not OreGen or target_block.mined:
-			#position = position + dir * delta * speed
-			#sparks.emitting = false
-		#else:
-			#position = position + dir * delta * speed / 3
-			#if !sparks.emitting:
-				#sparks.emitting = true
-	
 	if movement_progress > 0.5:
 		movement_progress -= 1
 		current_grid_position = target_grid_position
@@ -124,21 +114,6 @@ func handle_movement(delta: float) -> void:
 			block_mined.emit(target_block)
 			if target_block.template is OreGen:
 				ore_mined.emit(target_block.template.Name, fortune)
-	
-	#if (world_to_grid_space(position) - current_grid_position).length() > 0:
-		#current_grid_position = target_grid_position
-		#WorldInstance.reveal_radius(current_grid_position, 2 + Shop.scan_radius)
-		#if target_block.can_mine() and !target_block.mined:
-			#var fortune := roll_fortune()
-			#target_block.mine(fortune)
-			#fuel -=1
-			#block_mined.emit(target_block)
-			#if target_block.template is OreGen:
-				#ore_mined.emit(target_block.template.Name, fortune)
-	
-	#if movement_input.length() == 0 and !target_block.mined:
-		## Player let go of movement keys. Bring him back
-		#position = lerp(position, grid_to_world_space(current_grid_position), delta * speed)
 	
 	movement_position_target = lerp(grid_to_world_space(current_grid_position), grid_to_world_space(target_grid_position), movement_progress)
 	

@@ -36,6 +36,12 @@ func _pressed() -> void:
 			Shop.fuel_eff = index
 		StatUpgrade.UpgradeType.Fortune_Freq:
 			Shop.fortune_freq = index
+		StatUpgrade.UpgradeType.Fortune_Amount:
+			Shop.fortune_amount = index
+		StatUpgrade.UpgradeType.Scanner:
+			Shop.scan_radius = index
+		StatUpgrade.UpgradeType.Radar:
+			Shop.radar_radius = index
 	
 	Inventory.remove_ores(cost)
 	update_tooltip(cost)
@@ -71,6 +77,10 @@ func get_upgrade_index() -> int:
 		return Shop.fortune_freq
 	if type == StatUpgrade.UpgradeType.Fortune_Amount:
 		return Shop.fortune_amount
+	if type == StatUpgrade.UpgradeType.Radar:
+		return Shop.radar_radius
+	if type == StatUpgrade.UpgradeType.Scanner:
+		return Shop.scan_radius
 	return 0
 
 func update_tooltip(total_cost) -> void:
