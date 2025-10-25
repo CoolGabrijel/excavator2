@@ -10,6 +10,7 @@ var type: StatUpgrade.UpgradeType:
 
 func _physics_process(_delta: float) -> void:
 	if get_upgrade_index() > get_child_index():
+		update_tooltip(null)
 		disable_button(shop.style_bought)
 		return
 	
@@ -104,7 +105,7 @@ func disable_button(style : StyleBoxFlat) -> void:
 func get_child_index() -> int:
 	var index : int = 0
 	for child in get_parent().get_children():
-		if child is Button:
+		if child is UpgradeButton:
 			if child == self:
 				return index
 			index += 1

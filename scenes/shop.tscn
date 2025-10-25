@@ -164,7 +164,30 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
+"Qapur": 3
+})
+
+[node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
 "Qapur": 8
+})
+
+[node name="Button7" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Eyerhon": 5,
+"Qapur": 15
 })
 
 [node name="Scanner" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
