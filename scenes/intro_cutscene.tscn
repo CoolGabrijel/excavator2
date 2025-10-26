@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://76ca6obqnrrb"]
+
+[sub_resource type="GDScript" id="GDScript_kyypn"]
+resource_name = "intro_cutscene"
+script/source = "extends Control
+
+static var complete: bool = false
+
+@onready var label: RichTextLabel = $RichTextLabel
+@onready var button: Button = $Button
+
+@export var intro_text : Array[String]
+
+func _ready() -> void:
+	if complete:
+		hide()
+		queue_free()
+	
+	label.text = \"\"
+	button.hide()
+	
+	var tween := create_tween()
+	for i in range(intro_text.size()):
+		var line := intro_text[i]
+		var prev_lines = \"\"
+		for j in range(i):
+			prev_lines += intro_text[j] + \"\\n\"
+		
+		tween.tween_property(label,\"text\", prev_lines + line + \"\\n\", 1)
+		tween.tween_interval(2)
+	
+	tween.tween_property(button, \"visible\", true, 1)
+
+func _on_dive() -> void:
+	complete = true
+	get_tree().reload_current_scene()
+"
+
+[node name="IntroCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_kyypn")
+intro_text = Array[String](["Previous prototype proved most capable", "You are their newest and best model", "Gain trust, resources, power", "Upgrade your Vessel"])
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Previous prototype proved capable
+You are their newest model
+Do not disappoint
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = 22.0
+offset_right = 29.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dive"
+
+[connection signal="pressed" from="Button" to="." method="_on_dive"]

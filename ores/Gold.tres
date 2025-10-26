@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
 noise_type = 2
-seed = -539410654
+seed = -1656952052
 frequency = 0.379
 fractal_type = 0
 
@@ -21,7 +21,7 @@ noise = SubResource("FastNoiseLite_i7x3i")
 color_ramp = SubResource("Gradient_ud7q6")
 
 [sub_resource type="Gradient" id="Gradient_mwv14"]
-offsets = PackedFloat32Array(0.29746836, 0.42405063, 0.5886076, 0.721519)
+offsets = PackedFloat32Array(0.2721519, 0.3164557, 0.556962, 0.721519)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [resource]

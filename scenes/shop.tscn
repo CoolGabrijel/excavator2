@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dten3tw28j4f8"]
+[gd_scene load_steps=17 format=3 uid="uid://dten3tw28j4f8"]
 
 [ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://dwk7twssgy063" path="res://components/stat_upgrade.tscn" id="2_1l46r"]
@@ -47,6 +47,20 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ofw"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heatd"]
+bg_color = Color(0.338, 0.5252, 0.65, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v8qu"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -201,6 +215,30 @@ cost = Dictionary[String, int]({
 "Qapur": 20
 })
 
+[node name="Button9" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Eyerhon": 8,
+"Qapur": 15
+})
+
+[node name="Button10" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Eyerhon": 8,
+"Qapur": 20
+})
+
 [node name="Scanner" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
 tooltip_text = "Upgrade Vision around your Vessel"
@@ -208,6 +246,17 @@ type = 1
 
 [node name="Label" parent="HBoxContainer/StatUpgrades/Scanner" index="0"]
 text = "Vision"
+
+[node name="Button5" type="Button" parent="HBoxContainer/StatUpgrades/Scanner"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1v8qu")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Goaled": 5
+})
 
 [node name="FortuneFreq" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
@@ -281,6 +330,7 @@ script = ExtResource("5_2fc2m")
 type = 2
 cost = Dictionary[String, int]({
 "Eyerhon": 5,
+"Goaled": 5,
 "Qapur": 5
 })
 
@@ -304,7 +354,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
 text = "Radar"
 script = ExtResource("5_2fc2m")
 cost = Dictionary[String, int]({
-"Eyerhon": 10
+"Eyerhon": 10,
+"Goaled": 10
 })
 
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Radar"]
@@ -329,6 +380,7 @@ script = ExtResource("5_2fc2m")
 type = 1
 cost = Dictionary[String, int]({
 "Eyerhon": 5,
+"Goaled": 8,
 "Seelvher": 5
 })
 
