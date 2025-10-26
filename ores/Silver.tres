@@ -5,11 +5,11 @@
 [ext_resource type="SpriteFrames" uid="uid://blcqqulimar35" path="res://textures/silver_ore.tres" id="2_rm0l2"]
 
 [sub_resource type="Gradient" id="Gradient_ud7q6"]
-offsets = PackedFloat32Array(0.67333335, 1)
+offsets = PackedFloat32Array(0.67333335, 0.94666666)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
-seed = 1910641345
+seed = 604086735
 frequency = 0.045
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]
@@ -19,7 +19,7 @@ noise = SubResource("FastNoiseLite_i7x3i")
 color_ramp = SubResource("Gradient_ud7q6")
 
 [sub_resource type="Gradient" id="Gradient_jkxps"]
-offsets = PackedFloat32Array(0.443038, 0.60126585, 0.778481)
+offsets = PackedFloat32Array(0.56329113, 0.70886075, 0.835443)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.052941177)
 
 [resource]

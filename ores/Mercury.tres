@@ -1,10 +1,35 @@
-[gd_resource type="Resource" script_class="OreGen" load_steps=3 format=3 uid="uid://cvks2snkgmx1c"]
+[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cvks2snkgmx1c"]
 
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_5unrf"]
 [ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_vgywj"]
+[ext_resource type="SpriteFrames" uid="uid://b53f3o4372f3g" path="res://textures/mercury_ore.tres" id="2_c372h"]
+
+[sub_resource type="Gradient" id="Gradient_ud7q6"]
+offsets = PackedFloat32Array(0.76666665, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
+noise_type = 2
+seed = 1592956398
+frequency = 0.1685
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_i7x3i")
+color_ramp = SubResource("Gradient_ud7q6")
+invert = true
+
+[sub_resource type="Gradient" id="Gradient_c372h"]
+offsets = PackedFloat32Array(0.4177215, 0.6772152, 0.886076)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [resource]
 script = ExtResource("1_5unrf")
+NoiseGen = SubResource("NoiseTexture2D_af3ny")
+Ramp = SubResource("Gradient_c372h")
 Name = "Mehrquree"
+BlockAnimation = ExtResource("2_c372h")
 BacksideTexture = ExtResource("1_vgywj")
 metadata/_custom_type_script = "uid://dhj3wd1joua2f"

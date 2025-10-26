@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://1gimwflnuwmj"]
 
-[ext_resource type="Resource" uid="uid://d2d151apvlo6d" path="res://ores/Silver.tres" id="1_ud7q6"]
+[ext_resource type="Resource" uid="uid://cnx5r5m0ecqob" path="res://ores/Gold.tres" id="1_ud7q6"]
 [ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="2_ud7q6"]
 
 [sub_resource type="GDScript" id="GDScript_n2hss"]

@@ -186,8 +186,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
-"Eyerhon": 5,
 "Qapur": 15
+})
+
+[node name="Button8" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
+script = ExtResource("3_8r1wq")
+cost = Dictionary[String, int]({
+"Eyerhon": 5,
+"Qapur": 20
 })
 
 [node name="Scanner" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
@@ -196,7 +207,7 @@ tooltip_text = "Upgrade Vision around your Vessel"
 type = 1
 
 [node name="Label" parent="HBoxContainer/StatUpgrades/Scanner" index="0"]
-text = "Scanner"
+text = "Vision"
 
 [node name="FortuneFreq" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2

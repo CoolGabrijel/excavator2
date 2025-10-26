@@ -56,7 +56,9 @@ func generate_block(pos: Vector2i):
 		if val < rng.randf():
 			continue
 		
-		val = noise.get_image().get_pixel(pos.x,pos.y).a
+		#print(float(pos.y) / size.y)
+		var y_sample_pos: int = (float(pos.y) / size.y) * noise.get_image().get_size().y
+		val = noise.get_image().get_pixel(pos.x,y_sample_pos).a
 		
 		if val > rng.randf():
 			blocks[Vector2i(pos.x - size.x,pos.y)].set_template(ore)
