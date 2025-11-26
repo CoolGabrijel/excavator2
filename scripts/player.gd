@@ -26,15 +26,18 @@ func _ready() -> void:
 	current_grid_position = Vector2i(0,0)
 	fuel = 15 + 5 * Shop.fuel_eff
 	sparks.emitting = false
+	CameraController.camera_shake_amount = 1
 	
 	gfx.position.y -= 500
 	var intro_tween: Tween = create_tween()
 	intro_tween.set_ease(Tween.EASE_IN)
 	intro_tween.set_trans(Tween.TRANS_EXPO)
 	intro_tween.tween_property(gfx, "position", Vector2(0, -16), 1)
+	intro_tween.parallel().tween_method(func(val): CameraController.camera_shake_amount = val, 1,0,1)
 	intro_tween.tween_property(gfx, "position", Vector2.ZERO, 0.75).set_ease(Tween.EASE_OUT)
 	intro_tween.finished.connect(func(): locked = false)
 	intro_tween.finished.connect(func(): WorldInstance.blocks[Vector2i.ZERO].mine(roll_fortune()))
+	intro_tween.finished.connect(func(): CameraController.camera_shake_amount = 0)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatFuel"):
@@ -91,17 +94,20 @@ func handle_movement() -> void:
 		last_input = movement_input
 		movement_position_target = grid_to_world_space(current_grid_position)
 		sparks.emitting = false
+		CameraController.camera_shake_amount = 0
 		return
 	
 	if !target_block.mined:
 		if target_block.template is OreGen:
 			movement_progress += speed / 3
+			CameraController.camera_shake_amount = .25
 		else:
 			movement_progress += speed
 		sparks.emitting = true
 	else:
 		movement_progress += speed * speed_mined_modifier
 		sparks.emitting = false
+		CameraController.camera_shake_amount = 0
 	
 	if movement_progress > 0.5:
 		movement_progress -= 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://y2kx1fl6aftx"]
+[gd_scene load_steps=29 format=3 uid="uid://y2kx1fl6aftx"]
 
 [ext_resource type="Texture2D" uid="uid://dsh8mb656eopf" path="res://textures/player.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://l8hr1my2a8si" path="res://scripts/player.gd" id="1_51jd6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://i6exlrkd6p1m" path="res://scripts/scanner_aug.gd" id="3_0lm1f"]
 [ext_resource type="Script" uid="uid://ddnfjlsstu884" path="res://scripts/sweet_drill_aug.gd" id="3_5odhx"]
 [ext_resource type="PackedScene" uid="uid://c60pjop27p8gt" path="res://components/debug_pos.tscn" id="3_uapwn"]
+[ext_resource type="Script" uid="uid://8b5m60ake6ve" path="res://scripts/camera_controller.gd" id="4_pir3r"]
 [ext_resource type="Script" uid="uid://t2j6fe8hxmie" path="res://scripts/pickup_notifier.gd" id="5_1kub6"]
 [ext_resource type="PackedScene" uid="uid://cyhqnkd71yy86" path="res://components/pickup.tscn" id="6_kuobi"]
 
@@ -131,6 +132,7 @@ frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="Gfx"]
 zoom = Vector2(3, 3)
+script = ExtResource("4_pir3r")
 
 [node name="Sparks" type="GPUParticles2D" parent="Gfx"]
 position = Vector2(0, 8)

@@ -14,6 +14,7 @@ var rng := RandomNumberGenerator.new()
 var forgiveness := 1.5
 
 var miss_tween: Tween
+var hit_tween: Tween
 
 func _physics_process(_delta: float) -> void:
 	handle_sweet_spot()
@@ -105,6 +106,14 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 		player.ore_mined.emit(ore, ore_mined[ore])
 	
 	WorldInstance.reveal_radius(target_pos, 3)
+	
+	if hit_tween:
+		hit_tween.kill()
+	
+	hit_tween = create_tween()
+	hit_tween.set_ease(Tween.EASE_OUT)
+	hit_tween.set_trans(Tween.TRANS_CUBIC)
+	hit_tween.tween_method(func(val): CameraController.camera_shake_amount = val, 1, 0, 3)
 	
 	hide()
 

@@ -31,6 +31,12 @@ func _ready() -> void:
 	
 	tween.tween_property(button, \"visible\", true, 1)
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var eventkey : InputEventKey = event
+		if eventkey.keycode == KEY_ESCAPE:
+			_on_dive()
+
 func _on_dive() -> void:
 	complete = true
 	get_tree().reload_current_scene()
