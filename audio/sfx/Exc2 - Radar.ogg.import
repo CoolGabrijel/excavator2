@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3k08yp1sitnj"
+path="res://.godot/imported/Exc2 - Radar.ogg-b379a72a39c6995571097950f4b140fd.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Exc2 - Radar.ogg"
+dest_files=["res://.godot/imported/Exc2 - Radar.ogg-b379a72a39c6995571097950f4b140fd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

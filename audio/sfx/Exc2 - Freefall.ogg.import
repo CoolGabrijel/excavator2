@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7skuhq7k0a7g"
+path="res://.godot/imported/Exc2 - Freefall.ogg-1bbfebd31cc53bb83b0c22ae3a03be42.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Exc2 - Freefall.ogg"
+dest_files=["res://.godot/imported/Exc2 - Freefall.ogg-1bbfebd31cc53bb83b0c22ae3a03be42.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

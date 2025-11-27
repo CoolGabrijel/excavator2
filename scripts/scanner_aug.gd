@@ -2,6 +2,7 @@ extends Sprite2D
 
 @onready var player: Player = $".."
 @onready var label: Label = $"../GUI/ScannerDisplay/Label"
+@onready var sfx: AudioStreamPlayer = $Sfx
 
 var mouse_world_coords: Vector2
 var mouse_grid_coords: Vector2i
@@ -30,7 +31,7 @@ func _process(_delta: float) -> void:
 		show()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if cooldown > 0:
+	if cooldown > 0 or !Shop.radar_bought:
 		return
 	
 	if event is not InputEventMouseButton:
@@ -42,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		cooldown = 5
 		label.text = str("Scanner Cooldown: ", cooldown)
+		sfx.play()
 
 func block_mined(_block: BlockInstance):
 	if !Shop.radar_bought:

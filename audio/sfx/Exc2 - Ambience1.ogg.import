@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmyx1qw24kffv"
+path="res://.godot/imported/Exc2 - Ambience1.ogg-75d395290f06cf3d6970b8ad36b44880.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Exc2 - Ambience1.ogg"
+dest_files=["res://.godot/imported/Exc2 - Ambience1.ogg-75d395290f06cf3d6970b8ad36b44880.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

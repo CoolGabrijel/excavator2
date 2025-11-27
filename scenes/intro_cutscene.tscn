@@ -13,9 +13,12 @@ static var complete: bool = false
 
 func _ready() -> void:
 	if complete:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), false)
 		hide()
 		queue_free()
+		return
 	
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), true)
 	label.text = \"\"
 	button.hide()
 	

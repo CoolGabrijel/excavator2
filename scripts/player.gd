@@ -7,12 +7,17 @@ signal ore_mined(ore, amount)
 @onready var gfx: Node2D = $Gfx
 @onready var sprite: AnimatedSprite2D = $Gfx/AnimatedSprite2D
 @onready var sparks: GPUParticles2D = $Gfx/Sparks
+@onready var freefall_sfx: AudioStreamPlayer = $Freefall
+@onready var pickup_sfx: AudioStreamPlayer = $Pickup
+@onready var engine_idle_sfx: AudioStreamPlayer = $EngineIdle
+@onready var engine_hum_sfx: AudioStreamPlayer = $EngineHum
 
 @export var speed: float = 1
 @export var speed_mined_modifier: float = 4
 
 var current_grid_position : Vector2i
 var target_grid_position : Vector2i
+var is_moving : bool
 var movement_input : Vector2
 var last_input : Vector2
 var movement_progress : float
@@ -21,6 +26,7 @@ var fuel : int = 15
 var locked := true
 var rng := RandomNumberGenerator.new()
 var moveTween : Tween
+var sfxTween : Tween
 
 func _ready() -> void:
 	current_grid_position = Vector2i(0,0)
@@ -34,6 +40,7 @@ func _ready() -> void:
 	intro_tween.set_trans(Tween.TRANS_EXPO)
 	intro_tween.tween_property(gfx, "position", Vector2(0, -16), 1)
 	intro_tween.parallel().tween_method(func(val): CameraController.camera_shake_amount = val, 1,0,1)
+	intro_tween.parallel().tween_property(freefall_sfx, "volume_linear", 0, 1)
 	intro_tween.tween_property(gfx, "position", Vector2.ZERO, 0.75).set_ease(Tween.EASE_OUT)
 	intro_tween.finished.connect(func(): locked = false)
 	intro_tween.finished.connect(func(): WorldInstance.blocks[Vector2i.ZERO].mine(roll_fortune()))
@@ -74,12 +81,16 @@ func handle_movement() -> void:
 		dir = Vector2.DOWN
 		gfx.rotation_degrees = 0
 	
-	# For Animation
+	# For Animation and Audio
 	if movement_input.length() > 0:
 		if !sprite.is_playing():
 			sprite.play("default")
+		
+		is_moving = true
 	else:
 		sprite.stop()
+		
+		is_moving = false
 	
 	if !WorldInstance.blocks.has(target_grid_position):
 		return
@@ -120,6 +131,7 @@ func handle_movement() -> void:
 			block_mined.emit(target_block)
 			if target_block.template is OreGen:
 				ore_mined.emit(target_block.template.Name, fortune)
+				pickup_sfx.play()
 	
 	movement_position_target = lerp(grid_to_world_space(current_grid_position), grid_to_world_space(target_grid_position), movement_progress)
 	

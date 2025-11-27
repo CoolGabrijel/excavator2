@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgf6fvn0n6wcb"
+path="res://.godot/imported/Exc2 - Engine Hum.ogg-7db2f8a9fa31d7955b828e097a7060a3.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Exc2 - Engine Hum.ogg"
+dest_files=["res://.godot/imported/Exc2 - Engine Hum.ogg-7db2f8a9fa31d7955b828e097a7060a3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
