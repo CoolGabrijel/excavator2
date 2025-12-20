@@ -136,7 +136,9 @@ func _ready() -> void:
 	engine_hum.play()
 
 func _process(delta: float) -> void:
-	if player.locked:
+	if player.locked || player.fuel == 0:
+		volume_linear = 0
+		engine_hum.volume_linear = 0
 		return
 	
 	if !player.is_moving:
