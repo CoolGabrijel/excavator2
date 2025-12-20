@@ -358,7 +358,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_1v8qu")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
-"Dyemend": 30,
+"Dyemend": 15,
 "Goaled": 25,
 "Mehrquree": 30,
 "Seelvher": 30
@@ -479,7 +479,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_44xle")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_24it5")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
-"Dyemend": 20,
+"Dyemend": 10,
 "Eyerhon": 80,
 "Goaled": 50,
 "Seelvher": 30
