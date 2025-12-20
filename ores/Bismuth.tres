@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="OreGen" load_steps=9 format=3 uid="uid://d1vxgxtp461w4"]
 
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_7kxhq"]
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_pjkto"]
-[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_xobem"]
 [ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="2_7kxhq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf7ua"]
@@ -44,5 +44,5 @@ animations = [{
 script = ExtResource("1_pjkto")
 Name = "Bee's Moth"
 BlockAnimation = SubResource("SpriteFrames_xobem")
-BacksideTexture = ExtResource("1_xobem")
+BacksideTexture = ExtResource("1_7kxhq")
 metadata/_custom_type_script = "uid://dhj3wd1joua2f"

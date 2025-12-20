@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cpcw2ud755qfe"]
 
-[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_2om3n"]
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_2om3n"]
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_dqnxr"]
 [ext_resource type="Texture2D" uid="uid://cp6dnu42s57lt" path="res://textures/copper_ore.tres" id="3_c37jq"]
 
@@ -9,7 +9,7 @@ offsets = PackedFloat32Array(0.62, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
-seed = 1377539368
+seed = 872227794
 frequency = 0.0855
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]

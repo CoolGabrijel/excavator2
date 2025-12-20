@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://dl6l1xco2ey4h"]
 
-[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_fnswp"]
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_fnswp"]
 [ext_resource type="SpriteFrames" uid="uid://dcdbjm4dg6nhg" path="res://textures/uranium_ore.tres" id="2_fnswp"]
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="3_bfqje"]
 
@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
 noise_type = 2
-seed = -242457255
+seed = -1187689588
 frequency = 0.0457
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i7x3i"]

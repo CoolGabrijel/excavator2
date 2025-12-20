@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cmwdad38gkgjj"]
 
-[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_6leqa"]
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_6leqa"]
 [ext_resource type="SpriteFrames" uid="uid://bwwf7en7jiq16" path="res://textures/diamond_ore.tres" id="2_6leqa"]
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="3_22uan"]
 
@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vnwuv"]
 noise_type = 0
-seed = 1497743237
+seed = -626098942
 frequency = 0.4833
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22uan"]

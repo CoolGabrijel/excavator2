@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cnx5r5m0ecqob"]
 
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_jph3q"]
-[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_mwv14"]
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_mwv14"]
 [ext_resource type="Texture2D" uid="uid://d28rbjnr81ryi" path="res://textures/gold_ore.tres" id="2_l7bm1"]
 
 [sub_resource type="Gradient" id="Gradient_ud7q6"]
@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
 noise_type = 2
-seed = -490907347
+seed = 1638415319
 frequency = 0.379
 fractal_type = 0
 
