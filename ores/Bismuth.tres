@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="OreGen" load_steps=9 format=3 uid="uid://d1vxgxtp461w4"]
+
+[ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_pjkto"]
+[ext_resource type="Texture2D" uid="uid://sokwkfdicq6o" path="res://textures/stone.png" id="1_xobem"]
+[ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="2_7kxhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf7ua"]
+atlas = ExtResource("2_7kxhq")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ttv"]
+atlas = ExtResource("2_7kxhq")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ncx"]
+atlas = ExtResource("2_7kxhq")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oedmp"]
+atlas = ExtResource("2_7kxhq")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xobem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf7ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ttv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ncx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oedmp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_pjkto")
+Name = "Bee's Moth"
+BlockAnimation = SubResource("SpriteFrames_xobem")
+BacksideTexture = ExtResource("1_xobem")
+metadata/_custom_type_script = "uid://dhj3wd1joua2f"
