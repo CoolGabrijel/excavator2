@@ -1,9 +1,52 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtwago1kpcdaj"]
+[gd_scene load_steps=18 format=3 uid="uid://dtwago1kpcdaj"]
 
 [ext_resource type="Script" uid="uid://cqwgc48psj7iv" path="res://scripts/block_instance.gd" id="1_uiy85"]
 [ext_resource type="Resource" uid="uid://cktbgkctmgwo7" path="res://blocks/Dirt.tres" id="2_0ip78"]
 [ext_resource type="Texture2D" uid="uid://nsq07wm1lodw" path="res://textures/dirt.png" id="3_65ir7"]
 [ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="4_8iunh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iunh"]
+atlas = ExtResource("4_8iunh")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fixcg"]
+atlas = ExtResource("4_8iunh")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfmyh"]
+atlas = ExtResource("4_8iunh")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp1p3"]
+atlas = ExtResource("4_8iunh")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xuo4"]
+atlas = ExtResource("4_8iunh")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u67q3"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_8iunh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fixcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfmyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp1p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xuo4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlnpf"]
 atlas = ExtResource("4_8iunh")
@@ -59,6 +102,10 @@ animations = [{
 modulate = Color(0, 0, 0, 1)
 script = ExtResource("1_uiy85")
 template = ExtResource("2_0ip78")
+
+[node name="SweetSpot" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_u67q3")
 
 [node name="Front" type="Sprite2D" parent="."]
 texture = ExtResource("3_65ir7")

@@ -7,6 +7,7 @@ class_name BlockInstance
 @onready var front: Sprite2D = $Front
 @onready var back: Sprite2D = $Back
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sweet_spot: AnimatedSprite2D = $SweetSpot
 
 var mined := false
 var curtainTween : Tween
@@ -49,6 +50,7 @@ func mine(amount: int) -> void:
 	
 	front.hide()
 	animated_sprite.hide()
+	sweet_spot.hide()
 
 func reveal() -> void:
 	if curtainTween:

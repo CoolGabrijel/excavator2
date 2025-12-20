@@ -11,6 +11,7 @@ signal ore_mined(ore, amount)
 @onready var pickup_sfx: AudioStreamPlayer = $Pickup
 @onready var engine_idle_sfx: AudioStreamPlayer = $EngineIdle
 @onready var engine_hum_sfx: AudioStreamPlayer = $EngineHum
+@onready var crown: Sprite2D = $Gfx/Crown
 
 @export var speed: float = 1
 @export var speed_mined_modifier: float = 4
@@ -29,6 +30,9 @@ var moveTween : Tween
 var sfxTween : Tween
 
 func _ready() -> void:
+	if ShopScreen.Instance.check_win_con():
+		crown.show()
+	
 	current_grid_position = Vector2i(0,0)
 	fuel = 15 + 5 * Shop.fuel_eff
 	sparks.emitting = false
@@ -49,6 +53,15 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatFuel"):
 		fuel += 10
+	if event.is_action_pressed("CheatOres"):
+		Inventory.add_ore("Eyerhon", 10)
+		Inventory.add_ore("Qapur", 10)
+		Inventory.add_ore("Goaled", 10)
+		Inventory.add_ore("Mehrquree", 10)
+		Inventory.add_ore("Seelvher", 10)
+		Inventory.add_ore("Youraeneeyum", 10)
+		Inventory.add_ore("Dyemend", 10)
+		pass
 
 func _physics_process(_delta: float) -> void:
 	_capture_movement()

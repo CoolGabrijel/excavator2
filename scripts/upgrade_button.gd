@@ -8,6 +8,10 @@ var type: StatUpgrade.UpgradeType:
 	get:
 		return $"..".type
 
+var bought : bool:
+	get:
+		return get_upgrade_index() > get_child_index()
+
 func _physics_process(_delta: float) -> void:
 	if get_upgrade_index() > get_child_index():
 		update_tooltip(null)

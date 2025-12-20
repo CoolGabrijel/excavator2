@@ -1,29 +1,27 @@
 extends Control
+class_name ShopScreen
+
+static var Instance : ShopScreen
 
 @export var style_bought : StyleBoxFlat
 @export var style_afford : StyleBoxFlat
 @export var style_unaffordable : StyleBoxFlat
 
 @export_category("Upgrades")
-@export var upgrade_fuel : HBoxContainer
-@export var upgrade_fuel_buttons : Array[Button]
+@export var stat_upgrades : Array[StatUpgrade]
 
 func _ready() -> void:
-	#update_upgrades()
+	Instance = self
 	pass
+
+func check_win_con() -> bool:
+	for upgrade in stat_upgrades:
+		if !upgrade.fully_upgraded:
+			return false
+	return true
 
 func dive_again() -> void:
 	get_tree().reload_current_scene()
-
-func update_upgrades() -> void:
-	var buttons : Array[Button]
-	
-	buttons = get_buttons(upgrade_fuel)
-	for button in buttons:
-		button.disabled = true
-	for upgrade_index in Shop.fuel_eff:
-		buttons[upgrade_index].add_theme_stylebox_override("normal", style_bought)
-		buttons[upgrade_index].disabled = false
 
 func get_buttons(target: Control) -> Array[Button]:
 	var buttons : Array[Button]

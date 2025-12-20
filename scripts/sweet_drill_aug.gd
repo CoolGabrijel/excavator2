@@ -1,4 +1,5 @@
 extends Control
+class_name SweetDrillAug
 
 @export var progress_bar_normal_style: StyleBoxFlat
 @export var progress_bar_miss_style: StyleBoxFlat
@@ -105,7 +106,7 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 	for ore in ore_mined:
 		player.ore_mined.emit(ore, ore_mined[ore])
 	
-	WorldInstance.reveal_radius(target_pos, 3)
+	WorldInstance.reveal_radius(target_pos, 4 + Shop.scan_radius)
 	
 	if hit_tween:
 		hit_tween.kill()
@@ -132,6 +133,14 @@ func sweet_spot_miss(target_pos: Vector2i):
 	miss_tween.tween_property(self, "rotation_degrees", 35, 1)
 	ores_tested[target_pos] = false
 	ores_missed.append(target_pos)
+
+func test_ore(target_pos: Vector2i) -> bool:
+	if ores_tested.has(target_pos):
+		return ores_tested[target_pos]
+	
+	var val := rng.randf()
+	ores_tested[target_pos] = val >= 0.5
+	return ores_tested[target_pos]
 
 func grid_to_world_space(grid_pos: Vector2i) -> Vector2:
 	return player.grid_to_world_space(grid_pos)

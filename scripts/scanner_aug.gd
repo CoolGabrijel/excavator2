@@ -3,6 +3,7 @@ extends Sprite2D
 @onready var player: Player = $".."
 @onready var label: Label = $"../GUI/ScannerDisplay/Label"
 @onready var sfx: AudioStreamPlayer = $Sfx
+@onready var sweet_drill: SweetDrillAug = $"../SweetDrill"
 
 var mouse_world_coords: Vector2
 var mouse_grid_coords: Vector2i
@@ -40,6 +41,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	var mouse_input: InputEventMouseButton = event
 	if mouse_input.button_index == MOUSE_BUTTON_LEFT and mouse_input.pressed:
 		WorldInstance.reveal_radius(mouse_grid_coords, 2 + Shop.radar_radius)
+		var blocks := WorldInstance.get_blocks_in_radius(mouse_grid_coords, 2 + Shop.radar_radius)
+		for block in blocks:
+			if block.template is not OreGen or block.mined:
+				continue
+			if sweet_drill.test_ore(player.world_to_grid_space(block.position)):
+				block.sweet_spot.show()
+				block.sweet_spot.play("default")
 		get_viewport().set_input_as_handled()
 		cooldown = 5
 		label.text = str("Scanner Cooldown: ", cooldown)

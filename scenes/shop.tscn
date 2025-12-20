@@ -105,7 +105,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("upgrade_fuel_buttons")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("stat_upgrades")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,7 +116,7 @@ script = ExtResource("1_lx5au")
 style_bought = SubResource("StyleBoxFlat_xfvoa")
 style_afford = SubResource("StyleBoxFlat_lx5au")
 style_unaffordable = SubResource("StyleBoxFlat_1l46r")
-upgrade_fuel_buttons = [null, null, null, null]
+stat_upgrades = [NodePath("HBoxContainer/StatUpgrades/Fuel"), NodePath("HBoxContainer/StatUpgrades/Scanner"), NodePath("HBoxContainer/StatUpgrades/FortuneFreq"), NodePath("HBoxContainer/StatUpgrades/FortuneAmount"), NodePath("HBoxContainer/StatUpgrades/Radar")]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -226,7 +226,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
 "Eyerhon": 5,
-"Qapur": 20
+"Qapur": 15
 })
 
 [node name="Button9" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
@@ -238,7 +238,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_m4ofw")
 script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
 "Eyerhon": 8,
-"Qapur": 15
+"Qapur": 20
 })
 
 [node name="Button10" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
@@ -513,8 +513,7 @@ script = ExtResource("5_2fc2m")
 type = 2
 cost = Dictionary[String, int]({
 "Eyerhon": 5,
-"Goaled": 5,
-"Qapur": 5
+"Qapur": 10
 })
 
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Sweet"]
