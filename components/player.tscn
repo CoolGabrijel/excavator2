@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://y2kx1fl6aftx"]
+[gd_scene load_steps=37 format=3 uid="uid://y2kx1fl6aftx"]
 
 [ext_resource type="Texture2D" uid="uid://dsh8mb656eopf" path="res://textures/player.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://l8hr1my2a8si" path="res://scripts/player.gd" id="1_51jd6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://t2j6fe8hxmie" path="res://scripts/pickup_notifier.gd" id="5_1kub6"]
 [ext_resource type="AudioStream" uid="uid://c3k08yp1sitnj" path="res://audio/sfx/Exc2 - Radar.ogg" id="6_eju5v"]
 [ext_resource type="PackedScene" uid="uid://cyhqnkd71yy86" path="res://components/pickup.tscn" id="6_kuobi"]
+[ext_resource type="AudioStream" uid="uid://d3jk4gbpbt4dw" path="res://audio/sfx/Exc2 - Sweet Explosion.ogg" id="8_1wqow"]
 [ext_resource type="AudioStream" uid="uid://7skuhq7k0a7g" path="res://audio/sfx/Exc2 - Freefall.ogg" id="10_mm1xv"]
 [ext_resource type="AudioStream" uid="uid://xvajqbd085gv" path="res://audio/sfx/Exc2 - Pickup.ogg" id="11_qe8hj"]
 [ext_resource type="AudioStream" uid="uid://dg8qnyfudqpxv" path="res://audio/sfx/Exc2 - Engine Idle.ogg" id="13_jhk7o"]
@@ -279,6 +280,11 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.38431373, 0.70980394, 0.9607843, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SweetDrill"]
+stream = ExtResource("8_1wqow")
+volume_db = -12.5
+bus = &"SFX"
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

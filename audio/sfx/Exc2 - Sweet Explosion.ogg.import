@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3jk4gbpbt4dw"
+path="res://.godot/imported/Exc2 - Sweet Explosion.ogg-19bca54e63a80bc54fbccd9e0276319f.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Exc2 - Sweet Explosion.ogg"
+dest_files=["res://.godot/imported/Exc2 - Sweet Explosion.ogg-19bca54e63a80bc54fbccd9e0276319f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

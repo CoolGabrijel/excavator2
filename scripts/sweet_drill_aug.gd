@@ -8,6 +8,7 @@ class_name SweetDrillAug
 @onready var progress_bar: ProgressBar = $Bar/ProgressBar
 @onready var detail: TextureRect = $Bar/Detail
 @onready var hitGraphic: ColorRect = $ColorRect
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 var ores_tested : Dictionary[Vector2i, bool]
 var ores_missed : Array[Vector2i]
@@ -115,6 +116,8 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 	hit_tween.set_ease(Tween.EASE_OUT)
 	hit_tween.set_trans(Tween.TRANS_CUBIC)
 	hit_tween.tween_method(func(val): CameraController.camera_shake_amount = val, 1, 0, 3)
+	
+	audio.play()
 	
 	hide()
 
