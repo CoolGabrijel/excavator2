@@ -3,6 +3,8 @@ class_name UpgradeButton
 
 @export var cost : Dictionary[String, int]
 @onready var shop: Control = $"../../../.."
+@onready var hover_sfx: AudioStreamPlayer = $Hover
+@onready var click_sfx: AudioStreamPlayer = $Click
 
 var type: StatUpgrade.UpgradeType:
 	get:
@@ -11,6 +13,9 @@ var type: StatUpgrade.UpgradeType:
 var bought : bool:
 	get:
 		return get_upgrade_index() > get_child_index()
+
+func _ready() -> void:
+	mouse_entered.connect(_on_hover)
 
 func _physics_process(_delta: float) -> void:
 	if get_upgrade_index() > get_child_index():
@@ -54,6 +59,13 @@ func _pressed() -> void:
 	if PinDisplay.current_upgrade_name == $"../Label".text:
 		PinDisplay.instance.remove_pin()
 	
+	if click_sfx:
+		click_sfx.play()
+
+func _on_hover():
+	if !hover_sfx:
+		return
+	hover_sfx.play()
 
 func get_total_cost() -> Dictionary[String, int]:
 	var final_cost : Dictionary[String, int]

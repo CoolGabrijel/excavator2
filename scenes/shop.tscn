@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://dten3tw28j4f8"]
+[gd_scene load_steps=21 format=3 uid="uid://dten3tw28j4f8"]
 
 [ext_resource type="Script" uid="uid://byx62ymnw8nb2" path="res://scripts/shop_screen.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://dwk7twssgy063" path="res://components/stat_upgrade.tscn" id="2_1l46r"]
 [ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="3_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://omml6cvyysw5" path="res://textures/pin.tres" id="4_2fc2m"]
+[ext_resource type="AudioStream" uid="uid://bmt1lx6krkyu" path="res://audio/sfx/Kenney - UI - Hover.ogg" id="4_ajxib"]
 [ext_resource type="Script" uid="uid://4agxt25yl8dy" path="res://scripts/upgrade_aug.gd" id="5_2fc2m"]
 [ext_resource type="Script" uid="uid://b2h1h424n70wo" path="res://scripts/pin_button.gd" id="5_8r1wq"]
+[ext_resource type="AudioStream" uid="uid://c5eb8i5k21m1l" path="res://audio/sfx/Kenney - UI - Click.ogg" id="5_y6sft"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.338, 0.5252, 0.65, 1)
@@ -195,6 +197,16 @@ cost = Dictionary[String, int]({
 "Qapur": 3
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button5"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button5"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -206,6 +218,16 @@ cost = Dictionary[String, int]({
 "Qapur": 8
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button6"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button6"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button7" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -216,6 +238,16 @@ script = ExtResource("3_8r1wq")
 cost = Dictionary[String, int]({
 "Qapur": 15
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button7"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button7"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Button8" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
@@ -229,6 +261,16 @@ cost = Dictionary[String, int]({
 "Qapur": 15
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button8"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button8"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button9" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -241,6 +283,16 @@ cost = Dictionary[String, int]({
 "Qapur": 20
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button9"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button9"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button10" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -252,6 +304,16 @@ cost = Dictionary[String, int]({
 "Eyerhon": 8,
 "Qapur": 20
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button10"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button10"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Button11" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
@@ -266,6 +328,16 @@ cost = Dictionary[String, int]({
 "Qapur": 40
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button11"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button11"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button12" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -278,6 +350,16 @@ cost = Dictionary[String, int]({
 "Qapur": 60,
 "Youraeneeyum": 20
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button12"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button12"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Button13" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
@@ -292,6 +374,16 @@ cost = Dictionary[String, int]({
 "Youraeneeyum": 50
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button13"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button13"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button14" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -305,6 +397,16 @@ cost = Dictionary[String, int]({
 "Youraeneeyum": 60
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button14"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button14"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button15" type="Button" parent="HBoxContainer/StatUpgrades/Fuel"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -317,6 +419,16 @@ cost = Dictionary[String, int]({
 "Seelvher": 30,
 "Youraeneeyum": 70
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button15"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Fuel/Button15"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Scanner" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
@@ -337,6 +449,16 @@ cost = Dictionary[String, int]({
 "Goaled": 5
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button5"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button5"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/Scanner"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -349,6 +471,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 10,
 "Seelvher": 15
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button6"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button6"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Button7" type="Button" parent="HBoxContainer/StatUpgrades/Scanner"]
 custom_minimum_size = Vector2(23, 0)
@@ -363,6 +495,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 30,
 "Seelvher": 30
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button7"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Scanner/Button7"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="FortuneFreq" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
@@ -404,6 +546,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 20
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneFreq/Button5"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneFreq/Button5"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/FortuneFreq"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -416,6 +568,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 20,
 "Seelvher": 20
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneFreq/Button6"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneFreq/Button6"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="FortuneAmount" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
@@ -437,6 +599,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 20
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneAmount/Button5"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneAmount/Button5"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/FortuneAmount"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -449,6 +621,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 20,
 "Seelvher": 20
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneAmount/Button6"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/FortuneAmount/Button6"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Radar" parent="HBoxContainer/StatUpgrades" instance=ExtResource("2_1l46r")]
 layout_mode = 2
@@ -471,6 +653,16 @@ cost = Dictionary[String, int]({
 "Seelvher": 5
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Radar/Button5"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Radar/Button5"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button6" type="Button" parent="HBoxContainer/StatUpgrades/Radar"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -484,6 +676,16 @@ cost = Dictionary[String, int]({
 "Goaled": 50,
 "Seelvher": 30
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Radar/Button6"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/StatUpgrades/Radar/Button6"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="HBoxContainer/StatUpgrades"]
 layout_mode = 2
@@ -516,6 +718,16 @@ cost = Dictionary[String, int]({
 "Qapur": 10
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Sweet/Button"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Sweet/Button"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Sweet"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -524,6 +736,16 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("4_2fc2m")
 icon_alignment = 1
 script = ExtResource("5_8r1wq")
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Sweet/Pin"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Sweet/Pin"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Radar" type="HBoxContainer" parent="HBoxContainer/Augments"]
 layout_mode = 2
@@ -540,6 +762,16 @@ cost = Dictionary[String, int]({
 "Goaled": 10
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Radar/Button2"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Radar/Button2"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Radar"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -548,6 +780,16 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("4_2fc2m")
 icon_alignment = 1
 script = ExtResource("5_8r1wq")
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Radar/Pin"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Radar/Pin"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Fortune" type="HBoxContainer" parent="HBoxContainer/Augments"]
 layout_mode = 2
@@ -566,6 +808,16 @@ cost = Dictionary[String, int]({
 "Mehrquree": 5
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Fortune/Button3"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Fortune/Button3"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Pin" type="Button" parent="HBoxContainer/Augments/Fortune"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -574,6 +826,16 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("4_2fc2m")
 icon_alignment = 1
 script = ExtResource("5_8r1wq")
+
+[node name="Hover" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Fortune/Pin"]
+stream = ExtResource("4_ajxib")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="HBoxContainer/Augments/Fortune/Pin"]
+stream = ExtResource("5_y6sft")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Btn_Dive" type="Button" parent="."]
 layout_mode = 1

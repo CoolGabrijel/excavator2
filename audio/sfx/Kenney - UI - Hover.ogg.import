@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmt1lx6krkyu"
+path="res://.godot/imported/Kenney - UI - Hover.ogg-b537f2634d7157b556b10480a5e59b61.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Kenney - UI - Hover.ogg"
+dest_files=["res://.godot/imported/Kenney - UI - Hover.ogg-b537f2634d7157b556b10480a5e59b61.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

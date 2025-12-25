@@ -7,6 +7,8 @@ enum AugType {Radar, Fortune, SweetDrill}
 @export var cost : Dictionary[String, int]
 
 @onready var shop: Control = $"../../../.."
+@onready var hover_sfx: AudioStreamPlayer = $Hover
+@onready var click_sfx: AudioStreamPlayer = $Click
 
 var bought: bool:
 	get:
@@ -19,6 +21,9 @@ var bought: bool:
 				return Shop.sweet_drilling_bought
 			_:
 				return true
+
+func _ready() -> void:
+	mouse_entered.connect(_on_hover)
 
 func _process(_delta: float) -> void:
 	get_parent().visible = !bought
@@ -51,6 +56,9 @@ func _pressed() -> void:
 	
 	if PinDisplay.current_upgrade_name == text:
 		PinDisplay.instance.remove_pin()
+	
+	if click_sfx:
+		click_sfx.play()
 
 func update_tooltip(total_cost) -> void:
 	tooltip_text = ""
@@ -80,3 +88,7 @@ func disable_button(style : StyleBoxFlat) -> void:
 	mouse_default_cursor_shape = Control.CURSOR_ARROW
 	add_theme_stylebox_override("disabled", style)
 	add_theme_color_override("font_color", Color.WHITE)
+
+func _on_hover() -> void:
+	if hover_sfx:
+		hover_sfx.play()

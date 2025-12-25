@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwk7twssgy063"]
+[gd_scene load_steps=11 format=3 uid="uid://dwk7twssgy063"]
 
 [ext_resource type="Script" uid="uid://b7raphcfoi3wi" path="res://scripts/stat_upgrade.gd" id="1_tb4wv"]
 [ext_resource type="Script" uid="uid://b6igt7d4d6eks" path="res://scripts/upgrade_button.gd" id="2_axbjy"]
 [ext_resource type="Texture2D" uid="uid://omml6cvyysw5" path="res://textures/pin.tres" id="3_axbjy"]
+[ext_resource type="AudioStream" uid="uid://bmt1lx6krkyu" path="res://audio/sfx/Kenney - UI - Hover.ogg" id="3_opqjm"]
+[ext_resource type="AudioStream" uid="uid://c5eb8i5k21m1l" path="res://audio/sfx/Kenney - UI - Click.ogg" id="4_ewkmn"]
 [ext_resource type="Script" uid="uid://b2h1h424n70wo" path="res://scripts/pin_button.gd" id="4_jd6p8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
@@ -59,6 +61,16 @@ cost = Dictionary[String, int]({
 "Qapur": 5
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("3_opqjm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("4_ewkmn")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button2" type="Button" parent="."]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -69,6 +81,16 @@ script = ExtResource("2_axbjy")
 cost = Dictionary[String, int]({
 "Iron Ore": 2
 })
+
+[node name="Hover" type="AudioStreamPlayer" parent="Button2"]
+stream = ExtResource("3_opqjm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button2"]
+stream = ExtResource("4_ewkmn")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="Button3" type="Button" parent="."]
 custom_minimum_size = Vector2(23, 0)
@@ -81,6 +103,16 @@ cost = Dictionary[String, int]({
 "Iron Ore": 3
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="Button3"]
+stream = ExtResource("3_opqjm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button3"]
+stream = ExtResource("4_ewkmn")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Button4" type="Button" parent="."]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -92,6 +124,16 @@ cost = Dictionary[String, int]({
 "Iron Ore": 4
 })
 
+[node name="Hover" type="AudioStreamPlayer" parent="Button4"]
+stream = ExtResource("3_opqjm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button4"]
+stream = ExtResource("4_ewkmn")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Pin" type="Button" parent="."]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -99,3 +141,13 @@ tooltip_text = "Pin Ingredients"
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_axbjy")
 script = ExtResource("4_jd6p8")
+
+[node name="Hover" type="AudioStreamPlayer" parent="Pin"]
+stream = ExtResource("3_opqjm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="Pin"]
+stream = ExtResource("4_ewkmn")
+volume_db = -15.0
+bus = &"SFX"
