@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var label: Label = $"../GUI/ScannerDisplay/Label"
 @onready var sfx: AudioStreamPlayer = $Sfx
 @onready var sweet_drill: SweetDrillAug = $"../SweetDrill"
+@onready var bounds_prefab: Sprite2D = $Bounds
 
 var mouse_world_coords: Vector2
 var mouse_grid_coords: Vector2i
@@ -16,6 +17,7 @@ func _ready() -> void:
 		return
 	
 	show()
+	setup_visual(2 + Shop.radar_radius)
 
 func _process(_delta: float) -> void:
 	if !Shop.radar_bought:
@@ -62,3 +64,13 @@ func block_mined(_block: BlockInstance):
 		cooldown -= 1
 	
 	label.text = str("Scanner Cooldown: ", cooldown)
+
+func setup_visual(radius: int) -> void:
+	for y in range(-radius, radius+1):
+		for x in range(-radius, radius+1):
+			if absi(x) + absi(y) > radius:
+				continue
+			var instance = bounds_prefab.duplicate()
+			add_child(instance)
+			instance.position = Vector2(x * 16, y * 16)
+	pass
