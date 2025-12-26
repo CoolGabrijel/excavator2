@@ -380,4 +380,4 @@ bus = &"SFX"
 parameters/looping = true
 
 [connection signal="block_mined" from="." to="Scanner" method="block_mined"]
-[connection signal="ore_mined" from="." to="GUI/PickupNotifier" method="spawn_pickup"]
+[connection signal="ore_mined" from="." to="GUI/PickupNotifier" method="on_ore_mined"]
