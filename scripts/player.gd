@@ -140,7 +140,8 @@ func handle_movement() -> void:
 		if target_block.can_mine() and !target_block.mined:
 			var fortune := roll_fortune()
 			target_block.mine(fortune)
-			fuel -=1
+			if target_block.template.Name != "Dirt":
+				fuel -=1
 			block_mined.emit(target_block)
 			if target_block.template is OreGen:
 				ore_mined.emit(target_block.template.Name, fortune)
