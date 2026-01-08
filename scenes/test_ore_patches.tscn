@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://4oocdhsmxlrn"]
+
+[ext_resource type="Resource" uid="uid://dl6l1xco2ey4h" path="res://ores/Uranium.tres" id="1_pnv57"]
+[ext_resource type="Script" uid="uid://iu6r073hcm8l" path="res://scripts/ore_patch.gd" id="2_pnv57"]
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="3_pnv57"]
+
+[sub_resource type="GDScript" id="GDScript_4dria"]
+resource_name = "test_ore_patches"
+script/source = "@tool
+extends Node2D
+
+@export_tool_button(\"Show Preview\") var regen = _on_patch_changed
+@export var ore_patch : OrePatch
+@export var stone_texture : Texture2D
+
+var spots : Dictionary[Vector2i, Sprite2D]
+var rng := RandomNumberGenerator.new()
+
+func _ready() -> void:
+	#ore_patch.changed.connect(_on_patch_changed)
+	pass
+
+func _on_patch_changed() -> void:
+	_free_previous()
+	for pos in ore_patch.spots:
+		var sprite : Sprite2D = Sprite2D.new()
+		add_child(sprite)
+		sprite.position = pos * 16
+		sprite.texture = ore_patch.predominant_ore.BlockTexture
+		sprite.modulate.a = ore_patch.spots[pos] / 100
+		
+		spots[pos] = sprite
+		
+		#if rand <= ore_patch.spots[pos] / 100:
+			#sprite.texture = ore_patch.predominant_ore.BlockTexture
+		#else:
+			#sprite.texture = stone_texture
+	pass
+
+func _free_previous() -> void:
+	for pos in spots:
+		var ore = spots[pos]
+		ore.queue_free()
+	spots.clear()
+
+func _exit_tree() -> void:
+	#ore_patch.changed.disconnect(_on_patch_changed)
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_02xeo"]
+script = ExtResource("2_pnv57")
+predominant_ore = ExtResource("1_pnv57")
+spots = Dictionary[Vector2i, float]({
+Vector2i(-2, -1): 100.0,
+Vector2i(-2, 0): 100.0,
+Vector2i(-2, 1): 100.0,
+Vector2i(0, -2): 100.0,
+Vector2i(0, 0): 100.0,
+Vector2i(0, 2): 100.0,
+Vector2i(2, 0): 100.0
+})
+metadata/_custom_type_script = "uid://iu6r073hcm8l"
+
+[node name="TestOrePatches" type="Node2D"]
+script = SubResource("GDScript_4dria")
+ore_patch = SubResource("Resource_02xeo")
+stone_texture = ExtResource("3_pnv57")
+
+[node name="SpotPreview" type="Node2D" parent="."]
+
+[node name="Generation" type="Node2D" parent="."]
