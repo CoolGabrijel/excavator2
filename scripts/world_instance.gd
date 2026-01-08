@@ -61,7 +61,8 @@ func generate_block(pos: Vector2i):
 		val = noise.get_image().get_pixel(pos.x,y_sample_pos).a
 		
 		if val > rng.randf():
-			blocks[Vector2i(pos.x - size.x,pos.y)].set_template(ore)
+			if blocks.has(Vector2i(pos.x - size.x,pos.y)):
+				blocks[Vector2i(pos.x - size.x,pos.y)].set_template(ore)
 			return
 
 func randomize_ore_seed() -> void:

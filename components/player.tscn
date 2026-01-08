@@ -298,6 +298,7 @@ bus = &"SFX"
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="DebugPos" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("3_uapwn")]
+visible = false
 mouse_filter = 2
 player = NodePath("../..")
 

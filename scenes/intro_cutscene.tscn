@@ -1,10 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://76ca6obqnrrb"]
+[gd_scene load_steps=4 format=3 uid="uid://76ca6obqnrrb"]
 
 [sub_resource type="GDScript" id="GDScript_kyypn"]
 resource_name = "intro_cutscene"
 script/source = "extends Control
-
-static var complete: bool = false
 
 @onready var label: RichTextLabel = $RichTextLabel
 @onready var button: Button = $Button
@@ -12,7 +10,7 @@ static var complete: bool = false
 @export var intro_text : Array[String]
 
 func _ready() -> void:
-	if complete:
+	if SceneManager.intro_complete:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), false)
 		hide()
 		queue_free()
@@ -41,9 +39,25 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_on_dive()
 
 func _on_dive() -> void:
-	complete = true
+	SceneManager.intro_complete = true
 	get_tree().reload_current_scene()
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyypn"]
+bg_color = Color(0.07649998, 0.3799499, 0.51, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.13049997, 0.64814985, 0.87, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vuduy"]
+bg_color = Color(0.10949998, 0.5438499, 0.73, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.13049997, 0.64814985, 0.87, 1)
 
 [node name="IntroCutscene" type="Control"]
 layout_mode = 3
@@ -86,12 +100,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.5
-offset_top = 22.0
-offset_right = 29.5
-offset_bottom = 54.0
+offset_left = -115.0
+offset_top = 37.0
+offset_right = 115.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kyypn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vuduy")
 text = "Dive"
 
 [connection signal="pressed" from="Button" to="." method="_on_dive"]

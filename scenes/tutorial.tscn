@@ -1,0 +1,253 @@
+[gd_scene load_steps=7 format=3 uid="uid://dey3vc245pjee"]
+
+[ext_resource type="Script" uid="uid://dsunv80x4rlqh" path="res://scripts/tutorial.gd" id="1_6yjpi"]
+[ext_resource type="Texture2D" uid="uid://ckkiachlm3vya" path="res://textures/keys.png" id="3_cq4me"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yjpi"]
+bg_color = Color(0.165, 0.3703333, 0.55, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.09900001, 0.22219999, 0.33, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbqnl"]
+atlas = ExtResource("3_cq4me")
+region = Rect2(17, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq4me"]
+atlas = ExtResource("3_cq4me")
+region = Rect2(0, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yjpi"]
+atlas = ExtResource("3_cq4me")
+region = Rect2(34, 0, 17, 18)
+
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("stage_to_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6yjpi")
+stage_to_ui = {
+0: NodePath("TutNotifs/Dig"),
+1: NodePath("TutNotifs/Move"),
+2: NodePath("TutNotifs/Gather"),
+3: NodePath("TutNotifs/Fuel"),
+4: NodePath("TutNotifs/Dive")
+}
+
+[node name="TutNotifs" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 51.0
+offset_top = -122.0
+offset_right = 91.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dig" type="Panel" parent="TutNotifs"]
+visible = false
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 75.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yjpi")
+
+[node name="Label" type="Label" parent="TutNotifs/Dig"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Dig DOwn"
+horizontal_alignment = 1
+
+[node name="KeyS" type="TextureRect" parent="TutNotifs/Dig"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -33.5
+offset_right = 24.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gbqnl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Move" type="Panel" parent="TutNotifs"]
+visible = false
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 75.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yjpi")
+
+[node name="Label" type="Label" parent="TutNotifs/Move"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Move"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TutNotifs/Move"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -19.5
+offset_right = 29.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "/"
+horizontal_alignment = 1
+
+[node name="KeyA" type="TextureRect" parent="TutNotifs/Move"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -33.5
+offset_right = -8.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cq4me")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeyA2" type="TextureRect" parent="TutNotifs/Move"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.5
+offset_top = -33.5
+offset_right = 57.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_6yjpi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gather" type="Panel" parent="TutNotifs"]
+visible = false
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 75.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yjpi")
+
+[node name="Label" type="Label" parent="TutNotifs/Gather"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 3.0
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "Gather 4 Qapur"
+horizontal_alignment = 1
+
+[node name="QapurAmount" type="Label" parent="TutNotifs/Gather"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -8.5
+offset_right = 94.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/4"
+horizontal_alignment = 1
+
+[node name="Fuel" type="Panel" parent="TutNotifs"]
+visible = false
+layout_mode = 0
+offset_left = -510.0
+offset_top = -27.0
+offset_right = -243.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yjpi")
+
+[node name="Label" type="Label" parent="TutNotifs/Fuel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -25.5
+offset_right = 111.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You ran out of fuel
+Buy the upgrade"
+horizontal_alignment = 1
+
+[node name="Dive" type="Panel" parent="TutNotifs"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = 200.0
+offset_right = 63.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yjpi")
+
+[node name="Label" type="Label" parent="TutNotifs/Dive"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -12.0
+offset_right = 62.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dive again"
+horizontal_alignment = 1

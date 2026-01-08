@@ -15,6 +15,11 @@ func _process(_delta: float) -> void:
 	label.text += str(\"%10.2f\" % player.position.y)
 	label.text += \"\\n\"
 	label.text += \"Grid: \" + str(player.current_grid_position) + \"\\n\"
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var key_event = event as InputEventKey
+	if key_event and key_event.is_action_pressed(\"DebugInfo\"):
+		visible = !visible
 "
 
 [node name="DebugPos" type="Control"]
