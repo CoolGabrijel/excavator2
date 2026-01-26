@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://76ca6obqnrrb"]
+[gd_scene load_steps=7 format=3 uid="uid://76ca6obqnrrb"]
+
+[ext_resource type="AudioStream" uid="uid://d3jk4gbpbt4dw" path="res://audio/sfx/Exc2 - Sweet Explosion.ogg" id="1_vuduy"]
+[ext_resource type="AudioStream" uid="uid://bmt1lx6krkyu" path="res://audio/sfx/Kenney - UI - Hover.ogg" id="2_juow0"]
+[ext_resource type="AudioStream" uid="uid://c5eb8i5k21m1l" path="res://audio/sfx/Kenney - UI - Click.ogg" id="3_3438a"]
 
 [sub_resource type="GDScript" id="GDScript_kyypn"]
 resource_name = "intro_cutscene"
 script/source = "extends Control
 
 @onready var label: RichTextLabel = $RichTextLabel
-@onready var button: Button = $Button
+@onready var intro_label: RichTextLabel = $RichTextLabel2
+@onready var volume_adjust: Control = $VolumeAdjust
 
-@export var intro_text : Array[String]
+@export var char_checkpoints : Array[int]
+@export var final_checkpoints: Array[int]
+@export var prefix_empty : String
+@export var prefix_ok : String
+@export var prefix_fail : String
+
 
 func _ready() -> void:
 	if SceneManager.intro_complete:
@@ -16,31 +26,46 @@ func _ready() -> void:
 		queue_free()
 		return
 	
-	AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), true)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"SFX\"), 0.5)
+	#AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), true)
 	label.text = \"\"
-	button.hide()
-	
+	volume_adjust.hide()
+	_step1()
+
+func _step1() -> void:
 	var tween := create_tween()
-	for i in range(intro_text.size()):
-		var line := intro_text[i]
-		var prev_lines = \"\"
-		for j in range(i):
-			prev_lines += intro_text[j] + \"\\n\"
-		
-		tween.tween_property(label,\"text\", prev_lines + line + \"\\n\", 1)
-		tween.tween_interval(2)
+	for checkpoint in char_checkpoints:
+		tween.tween_property(intro_label,\"visible_characters\", checkpoint, 0.4)
+		tween.tween_interval(1.5)
 	
-	tween.tween_property(button, \"visible\", true, 1)
+	tween.tween_property(volume_adjust, \"visible\", true, 1)
+
+func _step2() -> void:
+	volume_adjust.hide()
+	var tween := create_tween()
+	for checkpoint in final_checkpoints:
+		tween.tween_callback($Sfx.play)
+		tween.tween_property(intro_label,\"visible_characters\", checkpoint, 0.4)
+		tween.tween_callback($Sfx.stop)
+		tween.tween_interval(1.5)
+	
+	tween.finished.connect(_start_game)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		var eventkey : InputEventKey = event
 		if eventkey.keycode == KEY_ESCAPE:
-			_on_dive()
+			_start_game()
 
 func _on_dive() -> void:
+	_step2()
+
+func _start_game() -> void:
 	SceneManager.intro_complete = true
 	get_tree().reload_current_scene()
+
+func _on_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"SFX\"), value)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyypn"]
@@ -67,7 +92,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_kyypn")
-intro_text = Array[String](["Previous prototype proved most capable", "You are their newest and best model", "Gain trust, resources, power", "Upgrade your Vessel"])
+char_checkpoints = Array[int]([33, 59, 90, 128, 170, 208])
+final_checkpoints = Array[int]([240, 270, 280, 300, 320, 340, 361, 380, 402])
+prefix_empty = "[color=transparent][ OK ][/color] "
+prefix_ok = "[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] "
+prefix_fail = "[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=red]FAIL[/color][/pulse] ] "
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -93,7 +122,87 @@ Do not disappoint
 "
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="VolumeAdjust" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VolumeAdjust"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -36.0
+offset_right = 139.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Adjust the Audio Driver"
+
+[node name="MainVolume" type="HBoxContainer" parent="VolumeAdjust"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -20.0
+offset_right = 191.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VolumeAdjust/MainVolume"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Empty" type="Control" parent="VolumeAdjust/MainVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slider" type="HSlider" parent="VolumeAdjust/MainVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Button" type="Button" parent="VolumeAdjust/MainVolume"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="VolumeAdjust/MainVolume/Button"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 170.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "click to preview"
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VolumeAdjust/MainVolume/Button"]
+stream = ExtResource("1_vuduy")
+volume_db = -12.5
+bus = &"SFX"
+
+[node name="Button" type="Button" parent="VolumeAdjust"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,6 +218,69 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_kyypn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vuduy")
-text = "Dive"
 
-[connection signal="pressed" from="Button" to="." method="_on_dive"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VolumeAdjust/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]SAVE[/pulse]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hover" type="AudioStreamPlayer" parent="VolumeAdjust/Button"]
+stream = ExtResource("2_juow0")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="VolumeAdjust/Button"]
+stream = ExtResource("3_3438a")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = -11.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=transparent][ OK ][/color] Verifying Ethereal Link...
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] Link Established!
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] Shared Memory Available
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] Transdimensional Sender Online
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=red]FAIL[/color][/pulse] ] Audio Driver config missing
+[color=transparent][ OK ][/color] Please Configure the Audio Driver...
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] Audio Driver Operational
+[ [pulse freq=1.0 color=#ffffff40 ease=-2.0][color=green]OK[/color][/pulse] ] Camera Feed Available
+[color=transparent][ OK ][/color] ...
+[color=transparent][ OK ][/color] Objectives:
+[color=transparent][ OK ][/color] Gather Ore
+[color=transparent][ OK ][/color] Go Deeper
+[color=transparent][ OK ][/color] Upgrade your Vessel
+[color=transparent][ OK ][/color] ...
+[color=transparent][ OK ][/color] Sending Camera Feed..."
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_juow0")
+volume_db = -15.0
+pitch_scale = 0.7
+bus = &"SFX"
+parameters/looping = true
+
+[connection signal="value_changed" from="VolumeAdjust/MainVolume/Slider" to="." method="_on_volume_changed"]
+[connection signal="pressed" from="VolumeAdjust/MainVolume/Button" to="VolumeAdjust/MainVolume/Button/AudioStreamPlayer" method="play"]
+[connection signal="mouse_entered" from="VolumeAdjust/Button" to="VolumeAdjust/Button/Hover" method="play"]
+[connection signal="pressed" from="VolumeAdjust/Button" to="." method="_on_dive"]
+[connection signal="pressed" from="VolumeAdjust/Button" to="VolumeAdjust/Button/Click" method="play"]
