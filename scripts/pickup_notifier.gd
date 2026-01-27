@@ -2,12 +2,17 @@ extends Control
 
 @export var pickup_template: PackedScene
 
+@onready var player: Player = $"../.."
+
 var queue : Dictionary[String, int]
 var last_pickup := 0
 
-func on_ore_mined(ore: String, amount: int):
+func _ready() -> void:
+	player.ore_mined.connect(on_ore_mined)
+
+func on_ore_mined(ore: BlockTemplate, amount: int):
 	#spawn_pickup(ore, amount)
-	add_to_queue(ore, amount)
+	add_to_queue(ore.Name, amount)
 
 func _process(_delta: float) -> void:
 	if queue.size() <= 0:

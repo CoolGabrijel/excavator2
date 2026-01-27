@@ -144,7 +144,7 @@ func handle_movement() -> void:
 				fuel -=1
 			block_mined.emit(target_block)
 			if target_block.template is OreGen:
-				ore_mined.emit(target_block.template.Name, fortune)
+				ore_mined.emit(target_block.template, fortune)
 				pickup_sfx.play()
 	
 	movement_position_target = lerp(grid_to_world_space(current_grid_position), grid_to_world_space(target_grid_position), movement_progress)

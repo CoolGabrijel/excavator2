@@ -28,5 +28,5 @@ func _physics_process(_delta: float) -> void:
 	if !player:
 		return
 	
-	if player.fuel <= 0 and !shop.visible:
-		shop.show()
+	#if player.fuel <= 0 and !shop.visible:
+		#shop.show()

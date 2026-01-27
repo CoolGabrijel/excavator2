@@ -1,0 +1,310 @@
+[gd_scene load_steps=7 format=3 uid="uid://df03y2pk85yni"]
+
+[ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_2s3kd"]
+[ext_resource type="AudioStream" uid="uid://xvajqbd085gv" path="res://audio/sfx/Exc2 - Pickup.ogg" id="2_buulv"]
+
+[sub_resource type="GDScript" id="GDScript_2s3kd"]
+resource_name = "RewardPreview"
+script/source = "extends Control
+
+@export var scene_manager : SceneManager
+
+@onready var container: HBoxContainer = $Rewards
+@onready var shop: ShopScreen = $\"../Shop\"
+
+var prefab : Control
+var player : Player
+var ore_mined : Dictionary[BlockTemplate, int]
+
+func _ready() -> void:
+	_create_prefab()
+	
+	if !scene_manager.player:
+		print(\"no player\")
+		return
+	print(\"player found\")
+	player = scene_manager.player
+	player.ore_mined.connect(_on_ore_mined)
+	#_begin()
+
+func _process(_delta: float) -> void:
+	if !player:
+		return
+	
+	if !visible and player.fuel <= 0:
+		print(\"beginning!\")
+		show()
+		_begin()
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is not InputEventMouseButton:
+		return
+	var mouse_event := event as InputEventMouseButton
+	if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed and visible:
+		queue_free()
+		shop.show()
+
+func _begin() -> void:
+	for ore in ore_mined:
+		_spawn_reward(ore, ore_mined[ore])
+		await get_tree().create_timer(0.5).timeout
+	
+
+func _spawn_reward(ore: BlockTemplate, amount: int) -> void:
+	var instance := prefab.duplicate()
+	container.add_child(instance)
+	var amount_label := instance.get_node(\"Label\") as Label
+	var texture_rect := instance.get_node(\"TextureRect\") as TextureRect
+	var animator := instance.get_node(\"AnimationPlayer\") as AnimationPlayer
+	var sfx := instance.get_node(\"Sfx\") as AudioStreamPlayer
+	amount_label.text = \"X \" + str(amount)
+	texture_rect.texture = ore.BlockTexture
+	animator.play(\"reveal\")
+	sfx.play()
+
+func _on_ore_mined(ore, amount: int) -> void:
+	if ore_mined.has(ore):
+		ore_mined[ore] += amount
+	else:
+		ore_mined[ore] = amount
+	
+
+func _create_prefab() -> void:
+	prefab = $Rewards/Reward.duplicate()
+	$Rewards/Reward.queue_free()
+"
+
+[sub_resource type="Animation" id="Animation_2s3kd"]
+resource_name = "reveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vfx/Shine:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vfx/Shine2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-83, -55), Vector2(156, -55)]
+}
+
+[sub_resource type="Animation" id="Animation_buulv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vfx/Shine:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vfx/Shine2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-83, -55)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crxrp"]
+_data = {
+&"RESET": SubResource("Animation_buulv"),
+&"reveal": SubResource("Animation_2s3kd")
+}
+
+[node name="RewardPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_2s3kd")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.29803923)
+
+[node name="Rewards" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Reward" type="Control" parent="Rewards"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Rewards/Reward"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_2s3kd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Vfx" type="ColorRect" parent="Rewards/Reward"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shine" type="ColorRect" parent="Rewards/Reward/Vfx"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shine2" type="ColorRect" parent="Rewards/Reward/Vfx"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -100.0
+offset_right = -107.999985
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset = Vector2(10, 100)
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rewards/Reward"]
+libraries = {
+&"": SubResource("AnimationLibrary_crxrp")
+}
+
+[node name="Sfx" type="AudioStreamPlayer" parent="Rewards/Reward"]
+stream = ExtResource("2_buulv")
+volume_db = -10.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Label" type="Label" parent="Rewards/Reward"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 9.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "X 15"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 167.0
+offset_bottom = 203.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "You ran out of fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Header"]
+modulate = Color(0.68, 0.68, 0.68, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 42.0
+offset_bottom = 66.0
+grow_horizontal = 2
+text = "You got:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 93.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "--- [pulse freq=1.0 color=#ffffff40 ease=-2.0]Click to continue[/pulse] ---"
+horizontal_alignment = 1
+vertical_alignment = 1
