@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://dl6l1xco2ey4h"]
+[gd_resource type="Resource" script_class="OreGen" load_steps=10 format=3 uid="uid://dl6l1xco2ey4h"]
 
 [ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_fnswp"]
 [ext_resource type="SpriteFrames" uid="uid://dcdbjm4dg6nhg" path="res://textures/uranium_ore.tres" id="2_fnswp"]
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="3_bfqje"]
+[ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="3_mynb0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfqje"]
+atlas = ExtResource("3_mynb0")
+region = Rect2(0, 96, 16, 16)
 
 [sub_resource type="Gradient" id="Gradient_6s6ed"]
 offsets = PackedFloat32Array(0.541096, 0.60274, 0.643836, 0.910959, 0.952055)
@@ -10,7 +15,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
 noise_type = 2
-seed = 883097727
+seed = -2083852382
 frequency = 0.0457
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i7x3i"]
@@ -29,6 +34,7 @@ script = ExtResource("3_bfqje")
 NoiseGen = SubResource("NoiseTexture2D_i7x3i")
 Ramp = SubResource("Gradient_ewvb8")
 Name = "Youraeneeyum"
+BlockTexture = SubResource("AtlasTexture_bfqje")
 BlockAnimation = ExtResource("2_fnswp")
 BacksideTexture = ExtResource("1_fnswp")
 metadata/_custom_type_script = "uid://dhj3wd1joua2f"

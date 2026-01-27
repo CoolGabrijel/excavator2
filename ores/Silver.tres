@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://d2d151apvlo6d"]
+[gd_resource type="Resource" script_class="OreGen" load_steps=10 format=3 uid="uid://d2d151apvlo6d"]
 
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_0kxqp"]
 [ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_jkxps"]
 [ext_resource type="SpriteFrames" uid="uid://blcqqulimar35" path="res://textures/silver_ore.tres" id="2_rm0l2"]
+[ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="3_rm0l2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qlw5"]
+atlas = ExtResource("3_rm0l2")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="Gradient" id="Gradient_ud7q6"]
 offsets = PackedFloat32Array(0.67333335, 0.94666666)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
-seed = 996026066
+seed = 2024521856
 frequency = 0.045
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af3ny"]
@@ -27,6 +32,7 @@ script = ExtResource("1_0kxqp")
 NoiseGen = SubResource("NoiseTexture2D_af3ny")
 Ramp = SubResource("Gradient_jkxps")
 Name = "Seelvher"
+BlockTexture = SubResource("AtlasTexture_7qlw5")
 BlockAnimation = ExtResource("2_rm0l2")
 BacksideTexture = ExtResource("1_jkxps")
 metadata/_custom_type_script = "uid://dhj3wd1joua2f"

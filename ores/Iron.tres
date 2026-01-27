@@ -14,7 +14,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ud7q6"]
 noise_type = 2
-seed = 1137445668
+seed = -944490083
 frequency = 0.2189
 fractal_type = 0
 

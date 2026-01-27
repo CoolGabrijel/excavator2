@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="OreGen" load_steps=8 format=3 uid="uid://cvks2snkgmx1c"]
+[gd_resource type="Resource" script_class="OreGen" load_steps=10 format=3 uid="uid://cvks2snkgmx1c"]
 
 [ext_resource type="Script" uid="uid://dhj3wd1joua2f" path="res://scripts/ore_gen.gd" id="1_5unrf"]
 [ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_c372h"]
 [ext_resource type="SpriteFrames" uid="uid://b53f3o4372f3g" path="res://textures/mercury_ore.tres" id="2_c372h"]
+[ext_resource type="Texture2D" uid="uid://b5xbtuyhu1y1x" path="res://textures/ore_atlas.png" id="3_vjnvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nsua"]
+atlas = ExtResource("3_vjnvi")
+region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="Gradient" id="Gradient_ud7q6"]
 offsets = PackedFloat32Array(0.76666665, 1)
@@ -10,7 +15,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i7x3i"]
 noise_type = 2
-seed = 198169222
+seed = 103693500
 frequency = 0.1685
 fractal_type = 0
 
@@ -30,6 +35,7 @@ script = ExtResource("1_5unrf")
 NoiseGen = SubResource("NoiseTexture2D_af3ny")
 Ramp = SubResource("Gradient_c372h")
 Name = "Mehrquree"
+BlockTexture = SubResource("AtlasTexture_1nsua")
 BlockAnimation = ExtResource("2_c372h")
 BacksideTexture = ExtResource("1_c372h")
 metadata/_custom_type_script = "uid://dhj3wd1joua2f"
