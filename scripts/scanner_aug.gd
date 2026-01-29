@@ -23,8 +23,7 @@ func _process(_delta: float) -> void:
 	if !Shop.radar_bought:
 		return
 	
-	mouse_world_coords = get_viewport().get_camera_2d().get_global_mouse_position()
-	mouse_grid_coords = player.world_to_grid_space(mouse_world_coords)
+	mouse_grid_coords = _get_mouse_grid_position()
 	position = player.grid_to_world_space(mouse_grid_coords)
 	
 	if mouse_grid_coords.y <= 0:
@@ -42,6 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	var mouse_input: InputEventMouseButton = event
 	if mouse_input.button_index == MOUSE_BUTTON_LEFT and mouse_input.pressed:
+		mouse_grid_coords = _get_mouse_grid_position()
 		WorldInstance.reveal_radius(mouse_grid_coords, 2 + Shop.radar_radius)
 		var blocks := WorldInstance.get_blocks_in_radius(mouse_grid_coords, 2 + Shop.radar_radius)
 		for block in blocks:
@@ -74,3 +74,7 @@ func setup_visual(radius: int) -> void:
 			add_child(instance)
 			instance.position = Vector2(x * 16, y * 16)
 	pass
+
+func _get_mouse_grid_position() -> Vector2i:
+	mouse_world_coords = get_viewport().get_camera_2d().get_global_mouse_position()
+	return player.world_to_grid_space(mouse_world_coords)
