@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://y2kx1fl6aftx"]
+[gd_scene load_steps=39 format=3 uid="uid://y2kx1fl6aftx"]
 
 [ext_resource type="Texture2D" uid="uid://dsh8mb656eopf" path="res://textures/player.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://l8hr1my2a8si" path="res://scripts/player.gd" id="1_51jd6"]
@@ -126,6 +126,48 @@ script/source = "extends Control
 
 func _physics_process(_delta: float) -> void:
 	label.text = \"Fuel: \" + str(player.fuel)
+"
+
+[sub_resource type="GDScript" id="GDScript_1wqow"]
+resource_name = "MobileInput"
+script/source = "extends Control
+
+@onready var player: Player = $\"../..\"
+
+var input : Vector2
+
+func _ready() -> void:
+	if !OS.has_feature(\"web_android\") and !OS.has_feature(\"web_ios\"):
+		hide()
+		queue_free()
+	pass
+
+func _process(_delta: float) -> void:
+	player.movement_input = input
+
+func _w_pushed() -> void:
+	input += Vector2.DOWN
+
+func _w_released() -> void:
+	input -= Vector2.DOWN
+
+func _s_pushed() -> void:
+	input += Vector2.UP
+
+func _s_released() -> void:
+	input -= Vector2.UP
+
+func _a_pushed() -> void:
+	input += Vector2.LEFT
+
+func _a_released() -> void:
+	input -= Vector2.LEFT
+
+func _d_pushed() -> void:
+	input += Vector2.RIGHT
+
+func _d_released() -> void:
+	input -= Vector2.RIGHT
 "
 
 [sub_resource type="GDScript" id="GDScript_jhk7o"]
@@ -307,8 +349,9 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
 offset_top = -40.0
-offset_right = 40.0
+offset_right = 60.0
 grow_vertical = 0
 mouse_filter = 2
 script = SubResource("GDScript_5odhx")
@@ -357,6 +400,56 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Scanner Cooldown: 5"
 
+[node name="MobileInput" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -233.0
+offset_right = -136.0
+offset_bottom = -143.0
+grow_horizontal = 0
+grow_vertical = 0
+script = SubResource("GDScript_1wqow")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MobileInput"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="W" type="Button" parent="GUI/MobileInput/VBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "w"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/MobileInput/VBoxContainer"]
+layout_mode = 2
+
+[node name="A" type="Button" parent="GUI/MobileInput/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "a"
+
+[node name="S" type="Button" parent="GUI/MobileInput/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "s"
+
+[node name="D" type="Button" parent="GUI/MobileInput/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "d"
+
 [node name="Freefall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_mm1xv")
 autoplay = true
@@ -381,3 +474,11 @@ bus = &"SFX"
 parameters/looping = true
 
 [connection signal="block_mined" from="." to="Scanner" method="block_mined"]
+[connection signal="button_down" from="GUI/MobileInput/VBoxContainer/W" to="GUI/MobileInput" method="_w_pushed"]
+[connection signal="button_up" from="GUI/MobileInput/VBoxContainer/W" to="GUI/MobileInput" method="_w_released"]
+[connection signal="button_down" from="GUI/MobileInput/VBoxContainer/HBoxContainer/A" to="GUI/MobileInput" method="_a_pushed"]
+[connection signal="button_up" from="GUI/MobileInput/VBoxContainer/HBoxContainer/A" to="GUI/MobileInput" method="_a_released"]
+[connection signal="button_down" from="GUI/MobileInput/VBoxContainer/HBoxContainer/S" to="GUI/MobileInput" method="_s_pushed"]
+[connection signal="button_up" from="GUI/MobileInput/VBoxContainer/HBoxContainer/S" to="GUI/MobileInput" method="_s_released"]
+[connection signal="button_down" from="GUI/MobileInput/VBoxContainer/HBoxContainer/D" to="GUI/MobileInput" method="_d_pushed"]
+[connection signal="button_up" from="GUI/MobileInput/VBoxContainer/HBoxContainer/D" to="GUI/MobileInput" method="_d_released"]

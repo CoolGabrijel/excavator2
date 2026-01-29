@@ -159,6 +159,9 @@ func roll_fortune() -> int:
 	return 1
 
 func _capture_movement() -> void:
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		return
+	
 	movement_input = Input.get_vector("Left","Right","Down","Up")
 
 func is_input_same() -> bool:
