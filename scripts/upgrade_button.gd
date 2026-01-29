@@ -2,7 +2,7 @@ extends Button
 class_name UpgradeButton
 
 @export var cost : Dictionary[String, int]
-@onready var shop: Control = $"../../../.."
+@onready var shop: Control = $"../../../../../.."
 @onready var hover_sfx: AudioStreamPlayer = $Hover
 @onready var click_sfx: AudioStreamPlayer = $Click
 

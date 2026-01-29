@@ -6,7 +6,7 @@ enum AugType {Radar, Fortune, SweetDrill}
 @export var type : AugType
 @export var cost : Dictionary[String, int]
 
-@onready var shop: Control = $"../../../.."
+@onready var shop: Control = $"../../../../../.."
 @onready var hover_sfx: AudioStreamPlayer = $Hover
 @onready var click_sfx: AudioStreamPlayer = $Click
 
