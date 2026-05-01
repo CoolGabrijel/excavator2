@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://chyo02nxgm2nk"
+path="res://.godot/imported/Lightern - Radar Beep.ogg-ea6e71302f590af84bca130240a4a14b.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Lightern - Radar Beep.ogg"
+dest_files=["res://.godot/imported/Lightern - Radar Beep.ogg-ea6e71302f590af84bca130240a4a14b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

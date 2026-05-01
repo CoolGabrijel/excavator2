@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct38fbj2u41y3"
+path="res://.godot/imported/Lightern - Ore Pickup.ogg-8e29d7937e1680f5041c053d6217acac.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Lightern - Ore Pickup.ogg"
+dest_files=["res://.godot/imported/Lightern - Ore Pickup.ogg-8e29d7937e1680f5041c053d6217acac.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

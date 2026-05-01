@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://df03y2pk85yni"]
 
 [ext_resource type="Texture2D" uid="uid://cb6d2qxhx2vt7" path="res://textures/stone.tres" id="1_2s3kd"]
-[ext_resource type="AudioStream" uid="uid://xvajqbd085gv" path="res://audio/sfx/Exc2 - Pickup.ogg" id="2_buulv"]
+[ext_resource type="AudioStream" uid="uid://qm4jc24ifuen" path="res://audio/sfx/Lightern - Ore Ding.ogg" id="2_buulv"]
 
 [sub_resource type="GDScript" id="GDScript_2s3kd"]
 resource_name = "RewardPreview"

@@ -99,7 +99,7 @@ func sweet_spot_hit(target_pos: Vector2i) -> void:
 		if block.template is not OreGen:
 			continue
 		
-		if ore_mined.has(block.template.Name):
+		if ore_mined.has(block.template):
 			ore_mined[block.template] += fortune
 		else:
 			ore_mined[block.template] = fortune

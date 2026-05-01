@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://c60pjop27p8gt" path="res://components/debug_pos.tscn" id="3_uapwn"]
 [ext_resource type="Script" uid="uid://8b5m60ake6ve" path="res://scripts/camera_controller.gd" id="4_pir3r"]
 [ext_resource type="Script" uid="uid://t2j6fe8hxmie" path="res://scripts/pickup_notifier.gd" id="5_1kub6"]
-[ext_resource type="AudioStream" uid="uid://c3k08yp1sitnj" path="res://audio/sfx/Exc2 - Radar.ogg" id="6_eju5v"]
+[ext_resource type="AudioStream" uid="uid://byioaljnujdjs" path="res://audio/sfx/Lightern - Radar Scan.ogg" id="6_1wqow"]
 [ext_resource type="PackedScene" uid="uid://cyhqnkd71yy86" path="res://components/pickup.tscn" id="6_kuobi"]
-[ext_resource type="AudioStream" uid="uid://d3jk4gbpbt4dw" path="res://audio/sfx/Exc2 - Sweet Explosion.ogg" id="8_1wqow"]
+[ext_resource type="AudioStream" uid="uid://be6nkbmi3ynpi" path="res://audio/sfx/Lightern - Ore Crush.ogg" id="8_1wqow"]
 [ext_resource type="AudioStream" uid="uid://7skuhq7k0a7g" path="res://audio/sfx/Exc2 - Freefall.ogg" id="10_mm1xv"]
-[ext_resource type="AudioStream" uid="uid://xvajqbd085gv" path="res://audio/sfx/Exc2 - Pickup.ogg" id="11_qe8hj"]
-[ext_resource type="AudioStream" uid="uid://dg8qnyfudqpxv" path="res://audio/sfx/Exc2 - Engine Idle.ogg" id="13_jhk7o"]
-[ext_resource type="AudioStream" uid="uid://bgf6fvn0n6wcb" path="res://audio/sfx/Exc2 - Engine Hum.ogg" id="14_1wqow"]
+[ext_resource type="AudioStream" uid="uid://ct38fbj2u41y3" path="res://audio/sfx/Lightern - Ore Pickup.ogg" id="13_6qb5m"]
+[ext_resource type="AudioStream" uid="uid://cf5in0vp20cpq" path="res://audio/sfx/Lightern - Drill Idle.ogg" id="14_1wqow"]
+[ext_resource type="AudioStream" uid="uid://dxyt2bhxyytuv" path="res://audio/sfx/Lightern - Drill Working.ogg" id="15_6qb5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pir3r"]
 atlas = ExtResource("2_couud")
@@ -225,6 +225,7 @@ script = ExtResource("4_pir3r")
 
 [node name="Sparks" type="GPUParticles2D" parent="Gfx"]
 position = Vector2(0, 8)
+amount = 16
 process_material = SubResource("ParticleProcessMaterial_5odhx")
 
 [node name="Crown" type="Sprite2D" parent="Gfx"]
@@ -249,7 +250,7 @@ texture = SubResource("AtlasTexture_1wqow")
 script = ExtResource("3_0lm1f")
 
 [node name="Sfx" type="AudioStreamPlayer" parent="Scanner"]
-stream = ExtResource("6_eju5v")
+stream = ExtResource("6_1wqow")
 volume_db = -10.0
 bus = &"SFX"
 
@@ -334,7 +335,7 @@ color = Color(0.38431373, 0.70980394, 0.9607843, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SweetDrill"]
 stream = ExtResource("8_1wqow")
-volume_db = -12.5
+volume_db = -7.5
 bus = &"SFX"
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -456,11 +457,11 @@ autoplay = true
 bus = &"SFX"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_qe8hj")
+stream = ExtResource("13_6qb5m")
 bus = &"SFX"
 
 [node name="EngineIdle" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_jhk7o")
+stream = ExtResource("14_1wqow")
 volume_db = -14.0
 bus = &"SFX"
 parameters/looping = true
@@ -468,7 +469,7 @@ script = SubResource("GDScript_jhk7o")
 max_volume = 0.2
 
 [node name="EngineHum" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_1wqow")
+stream = ExtResource("15_6qb5m")
 volume_db = -12.0
 bus = &"SFX"
 parameters/looping = true

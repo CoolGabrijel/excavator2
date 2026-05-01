@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://be6nkbmi3ynpi"
+path="res://.godot/imported/Lightern - Ore Crush.ogg-e41643abfb472c3db42064f136514348.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Lightern - Ore Crush.ogg"
+dest_files=["res://.godot/imported/Lightern - Ore Crush.ogg-e41643abfb472c3db42064f136514348.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

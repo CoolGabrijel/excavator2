@@ -22,6 +22,9 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://components/": "purple",
+"res://ores/": "yellow",
+"res://scenes/": "gray",
 "res://scripts/": "blue",
 "res://textures/": "green"
 }
