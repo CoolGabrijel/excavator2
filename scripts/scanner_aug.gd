@@ -26,9 +26,8 @@ func _process(_delta: float) -> void:
 	mouse_grid_coords = _get_mouse_grid_position()
 	position = player.grid_to_world_space(mouse_grid_coords)
 	
-	if mouse_grid_coords.y <= 0:
+	if mouse_grid_coords.y <= 0 or cooldown > 0:
 		hide()
-		return
 	else:
 		show()
 
