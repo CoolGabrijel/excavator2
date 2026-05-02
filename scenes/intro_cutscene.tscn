@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://76ca6obqnrrb"]
 
-[ext_resource type="AudioStream" uid="uid://d3jk4gbpbt4dw" path="res://audio/sfx/Exc2 - Sweet Explosion.ogg" id="1_vuduy"]
+[ext_resource type="AudioStream" uid="uid://be6nkbmi3ynpi" path="res://audio/sfx/Lightern - Ore Crush.ogg" id="1_3438a"]
 [ext_resource type="AudioStream" uid="uid://bmt1lx6krkyu" path="res://audio/sfx/Kenney - UI - Hover.ogg" id="2_juow0"]
 [ext_resource type="AudioStream" uid="uid://c5eb8i5k21m1l" path="res://audio/sfx/Kenney - UI - Click.ogg" id="3_3438a"]
 
@@ -66,6 +66,9 @@ func _start_game() -> void:
 
 func _on_volume_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"SFX\"), value)
+
+func _on_volume_drag_ended(_value_changed: bool) -> void:
+	$VolumeAdjust/MainVolume/Button/AudioStreamPlayer.play()
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyypn"]
@@ -198,7 +201,7 @@ text = "click to preview"
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VolumeAdjust/MainVolume/Button"]
-stream = ExtResource("1_vuduy")
+stream = ExtResource("1_3438a")
 volume_db = -12.5
 bus = &"SFX"
 
@@ -279,6 +282,7 @@ pitch_scale = 0.7
 bus = &"SFX"
 parameters/looping = true
 
+[connection signal="drag_ended" from="VolumeAdjust/MainVolume/Slider" to="." method="_on_volume_drag_ended"]
 [connection signal="value_changed" from="VolumeAdjust/MainVolume/Slider" to="." method="_on_volume_changed"]
 [connection signal="pressed" from="VolumeAdjust/MainVolume/Button" to="VolumeAdjust/MainVolume/Button/AudioStreamPlayer" method="play"]
 [connection signal="mouse_entered" from="VolumeAdjust/Button" to="VolumeAdjust/Button/Hover" method="play"]
