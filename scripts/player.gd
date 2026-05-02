@@ -51,6 +51,9 @@ func _ready() -> void:
 	intro_tween.finished.connect(func(): CameraController.camera_shake_amount = 0)
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("DebugInfo"):
+		$CurrentPos.visible = !$CurrentPos.visible
+		$TargetPos.visible = !$TargetPos.visible
 	if event.is_action_pressed("CheatFuel"):
 		fuel += 10
 	if event.is_action_pressed("CheatOres"):

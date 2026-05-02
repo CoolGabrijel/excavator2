@@ -234,10 +234,12 @@ position = Vector2(0, -12)
 texture = SubResource("AtlasTexture_jhk7o")
 
 [node name="CurrentPos" type="MeshInstance2D" parent="."]
+visible = false
 modulate = Color(0.51, 1, 0.51, 0.192157)
 mesh = SubResource("QuadMesh_51jd6")
 
 [node name="TargetPos" type="MeshInstance2D" parent="."]
+visible = false
 modulate = Color(1, 0.51, 0.51, 0.192157)
 position = Vector2(-16, 0)
 mesh = SubResource("QuadMesh_51jd6")
