@@ -458,6 +458,7 @@ bus = &"SFX"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_6qb5m")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="EngineIdle" type="AudioStreamPlayer" parent="."]
