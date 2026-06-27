@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://76ca6obqnrrb"]
+[gd_scene load_steps=8 format=3 uid="uid://76ca6obqnrrb"]
 
 [ext_resource type="AudioStream" uid="uid://be6nkbmi3ynpi" path="res://audio/sfx/Lightern - Ore Crush.ogg" id="1_3438a"]
 [ext_resource type="AudioStream" uid="uid://bmt1lx6krkyu" path="res://audio/sfx/Kenney - UI - Hover.ogg" id="2_juow0"]
+[ext_resource type="AudioStream" uid="uid://2ocqx1nj57u5" path="res://audio/music/shakedance_void_journey.ogg" id="2_wifpd"]
 [ext_resource type="AudioStream" uid="uid://c5eb8i5k21m1l" path="res://audio/sfx/Kenney - UI - Click.ogg" id="3_3438a"]
 
 [sub_resource type="GDScript" id="GDScript_kyypn"]
@@ -27,7 +28,7 @@ func _ready() -> void:
 		return
 	
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"SFX\"), 0.5)
-	#AudioServer.set_bus_mute(AudioServer.get_bus_index(\"SFX\"), true)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"Music\"), 0.5)
 	label.text = \"\"
 	volume_adjust.hide()
 	_step1()
@@ -67,8 +68,14 @@ func _start_game() -> void:
 func _on_volume_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"SFX\"), value)
 
+func _on_music_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(\"Music\"), value)
+
 func _on_volume_drag_ended(_value_changed: bool) -> void:
 	$VolumeAdjust/MainVolume/Button/AudioStreamPlayer.play()
+
+func _on_music_drag_ended(_value_changed: bool) -> void:
+	$VolumeAdjust/MusicVolume/Button/AudioStreamPlayer.play()
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyypn"]
@@ -167,7 +174,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VolumeAdjust/MainVolume"]
 layout_mode = 2
-text = "Volume"
+text = "Sfx"
 
 [node name="Empty" type="Control" parent="VolumeAdjust/MainVolume"]
 layout_mode = 2
@@ -205,6 +212,62 @@ stream = ExtResource("1_3438a")
 volume_db = -12.5
 bus = &"SFX"
 
+[node name="MusicVolume" type="HBoxContainer" parent="VolumeAdjust"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = 29.0
+offset_right = 191.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VolumeAdjust/MusicVolume"]
+layout_mode = 2
+text = "Music"
+
+[node name="Empty" type="Control" parent="VolumeAdjust/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slider" type="HSlider" parent="VolumeAdjust/MusicVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Button" type="Button" parent="VolumeAdjust/MusicVolume"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="VolumeAdjust/MusicVolume/Button"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 170.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "click to preview"
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VolumeAdjust/MusicVolume/Button"]
+stream = ExtResource("2_wifpd")
+volume_db = -8.0
+bus = &"Music"
+
 [node name="Button" type="Button" parent="VolumeAdjust"]
 layout_mode = 1
 anchors_preset = 8
@@ -213,9 +276,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -115.0
-offset_top = 37.0
+offset_top = 93.0
 offset_right = 115.0
-offset_bottom = 121.0
+offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -285,6 +348,9 @@ parameters/looping = true
 [connection signal="drag_ended" from="VolumeAdjust/MainVolume/Slider" to="." method="_on_volume_drag_ended"]
 [connection signal="value_changed" from="VolumeAdjust/MainVolume/Slider" to="." method="_on_volume_changed"]
 [connection signal="pressed" from="VolumeAdjust/MainVolume/Button" to="VolumeAdjust/MainVolume/Button/AudioStreamPlayer" method="play"]
+[connection signal="drag_ended" from="VolumeAdjust/MusicVolume/Slider" to="." method="_on_music_drag_ended"]
+[connection signal="value_changed" from="VolumeAdjust/MusicVolume/Slider" to="." method="_on_music_changed"]
+[connection signal="pressed" from="VolumeAdjust/MusicVolume/Button" to="VolumeAdjust/MusicVolume/Button/AudioStreamPlayer" method="play"]
 [connection signal="mouse_entered" from="VolumeAdjust/Button" to="VolumeAdjust/Button/Hover" method="play"]
 [connection signal="pressed" from="VolumeAdjust/Button" to="." method="_on_dive"]
 [connection signal="pressed" from="VolumeAdjust/Button" to="VolumeAdjust/Button/Click" method="play"]

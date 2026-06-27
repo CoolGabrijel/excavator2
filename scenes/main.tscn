@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://by86bhvu38sxh"]
+[gd_scene load_steps=10 format=3 uid="uid://by86bhvu38sxh"]
 
 [ext_resource type="PackedScene" uid="uid://nen6gdpusaex" path="res://scenes/world.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://bqcd2apx8kbxh" path="res://scripts/scene_manager.gd" id="2_0wfyh"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dten3tw28j4f8" path="res://scenes/shop.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://76ca6obqnrrb" path="res://scenes/intro_cutscene.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://df03y2pk85yni" path="res://components/reward_preview.tscn" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://beepl5qp71cl3" path="res://scripts/music_manager.gd" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://2ocqx1nj57u5" path="res://audio/music/shakedance_void_journey.ogg" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://csncgoue38gry" path="res://audio/music/shakedance_loop.ogg" id="9_85g3d"]
 
 [node name="Main" type="Node"]
 
@@ -32,3 +35,18 @@ scene_manager = NodePath("../../SceneManager")
 [node name="Game" type="Node2D" parent="."]
 
 [node name="World" parent="Game" instance=ExtResource("1_0wfyh")]
+
+[node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("intro_audio", "audio_player")]
+script = ExtResource("7_o6xl0")
+intro_audio = NodePath("MusicIntro")
+audio_player = NodePath("MusicLoop")
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("8_tipki")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("9_85g3d")
+volume_db = -8.0
+bus = &"Music"
