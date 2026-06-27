@@ -17,6 +17,10 @@ func _ready() -> void:
 	Instance = self
 	pass
 
+func _physics_process(_delta: float) -> void:
+	var first_fuel_bought : bool = Shop.fuel_eff > 0
+	$VBoxContainer/Content/Btn_Dive.disabled = !first_fuel_bought
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("CheatShop"):
 		visible = !visible

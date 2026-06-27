@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dey3vc245pjee"]
+[gd_scene load_steps=8 format=3 uid="uid://dey3vc245pjee"]
 
 [ext_resource type="Script" uid="uid://dsunv80x4rlqh" path="res://scripts/tutorial.gd" id="1_6yjpi"]
 [ext_resource type="Texture2D" uid="uid://ckkiachlm3vya" path="res://textures/keys.png" id="3_cq4me"]
@@ -22,6 +22,19 @@ region = Rect2(0, 0, 17, 18)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yjpi"]
 atlas = ExtResource("3_cq4me")
 region = Rect2(34, 0, 17, 18)
+
+[sub_resource type="GDScript" id="GDScript_8ho6b"]
+resource_name = "Flashing"
+script/source = "extends ColorRect
+
+func _ready() -> void:
+	var tween := create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, \"scale\", Vector2.ONE * 1.25, 1).from(Vector2.ONE * 0.25)
+	tween.parallel().tween_property(self, \"modulate\", Color.TRANSPARENT, 1).from(Color.WHITE)
+	tween.set_loops()
+"
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("stage_to_ui")]
 layout_mode = 3
@@ -219,6 +232,16 @@ grow_vertical = 2
 text = "You ran out of fuel
 Buy the upgrade"
 horizontal_alignment = 1
+
+[node name="Panel" type="ColorRect" parent="TutNotifs/Fuel"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = -52.0
+offset_right = 144.0
+offset_bottom = -12.0
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+script = SubResource("GDScript_8ho6b")
 
 [node name="Dive" type="Panel" parent="TutNotifs"]
 visible = false
